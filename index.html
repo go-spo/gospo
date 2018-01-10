@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Gospo</title>
+        <!-- FAVICON -->
+        <link rel="icon" type="image/png" href="resources/img/favicon.png" />
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <!-- Custom styles for this template -->
+        <link href="styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
+        <!-- Jquery User Interface-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    </head>
+    <body>
+        <!--Jquery and Jquery UI -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Data picker -->
+        <script src="vendor/jquery/components/data_picker/data_picker.js" type="text/javascript"></script>
+        <!-- Font Awesome -->
+        <script src="vendor/fontawesome-all.js" type="text/javascript"></script>
+        <script src="vendor/jquery/effects/slider.js" type="text/javascript"></script>
+
+        <!-- Navigation -->
+            <nav id="main-header-effect" class="navbar navbar-expand-lg navbar-dark bg-main-header-custom fixed-top">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a href="index.html"><img src="resources/img/logo-3.PNG" alt=""/></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://danialba96.wixsite.com/gospo">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-primary nav-login" href="#">Log In</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        <header>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox"></div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <section id="browser-effect" class="py-5">
+            <div class="main-container">
+                <div class="browser">
+                    <form class="form-browser" action="layout/resultado-centros-busqueda.php" method="POST">
+                        <div class="form-group" style="flex-grow: 3">
+                            <div class="searchDataList">
+                                <select name="deportes-browser" id="deportes-browser" class="select-drop">
+                                    <option value="0">Deporte</option>       
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="flex-grow: 3">
+                            <div class="searchDataList">
+                                <select name="ciudades-browser" id="ciudades-browser" class="select-drop">
+                                    <option value="0">Ciudades</option>          
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-date-picker" style="flex-grow: 1">
+                            <div class="searchDataList">
+                                <span class="date-picker-container">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <input type="text" id="from" name="from" class="date-picker" readonly>
+                                </span>
+                                <span class="date-picker-container">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <input type="text" id="to" name="to" class="date-picker" readonly>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group-btn" style="flex-grow: 1">
+                            <button type="submit" class="btn btn-primary btn-browser">Search <i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="m-0 text-center text-white">&copy; Gospo 2017</p>
+            </div>
+            <!-- /.container -->
+        </footer>
+
+        <script src="model/categories/categorias.js" type="text/javascript"></script>
+        <script src="model/browser/selects.js" type="text/javascript"></script>
+        <script src="model/carousel/carruselIMG.js" type="text/javascript"></script>
+    </body>
+
+</html>

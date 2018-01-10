@@ -1,0 +1,86 @@
+/*============COLORS=============*/
+/*============SIZES=============*/
+#map {
+  background-color: grey;
+  height: 91vh; }
+
+.sidebar {
+  height: 89vh; }
+
+.header {
+  width: 90%; }
+
+/* ======================== MAIN GRID ===============================*/
+.container-grid {
+  margin: 0px;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  grid-template-rows: 9vh;
+  grid-template-areas: "header header" "sidebar main"; }
+
+.header {
+  grid-area: header; }
+
+.map-container {
+  grid-area: main; }
+
+.sidebar {
+  grid-area: sidebar;
+  width: 30vw;
+  min-width: 25vw;
+  max-width: 75vw; }
+
+@media (max-width: 1000px) {
+  .container-grid {
+    grid-template-areas: "header header" "main main" "sidebar sidebar"; }
+  .sidebar {
+    width: 100% !important;
+    max-width: 100%; }
+  .container-sidebar {
+    overflow: visible !important; }
+  .map-container {
+    margin-top: 10px; } }
+
+/* ======================= SIDEBAR GRID =============================*/
+.container-sidebar {
+  margin: 0px;
+  padding: 0px;
+  display: grid;
+  overflow: auto;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 40vh 50vh;
+  grid-template-areas: "header header" "main main"; }
+
+.main-img_sidebar {
+  grid-area: header;
+  text-align: center; }
+
+.main-img_sidebar > img {
+  width: 100%;
+  max-height: 100%;
+  max-width: 30vw;
+  background-size: auto; }
+
+.content_sidebar {
+  grid-area: main;
+  height: max-content;
+  text-align: justify;
+  padding: 10px; }
+
+/* ================== SCROLLBAR ========================= */
+@media (min-width: 1000px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 12px; }
+  ::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+    border-radius: 10px; }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #ccc; }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #999; } }
+
+.ui-resizable-handle {
+  background-image: none; }
