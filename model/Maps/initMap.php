@@ -8,7 +8,7 @@ if ($conection) {
     $ciudad = $_SESSION["ciudad"];
     $markers = [];
 
-    $queryMarkers = $conection->query("select nombre, coordenada_x, coordenada_y, url_img 
+    $queryMarkers = $conection->query("select id_centro,nombre, coordenada_x, coordenada_y, url_img 
     from centros
     where id_centro in (select id_centro from pistas_deporte_centro where id_deporte = (select id_deporte from deportes where id_deporte='$deporte') and
     id_centro in (select id_centro from centros where provincia ='$ciudad'));");

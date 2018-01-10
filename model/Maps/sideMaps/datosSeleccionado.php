@@ -4,10 +4,9 @@ include '../../DBA/DBA.php';
 session_start();
 
 if ($conection) {
-    if (isset($_GET["latitud"])) {
+    if (isset($_GET["value"])) {
 
-        $latitud = $_GET["latitud"];
-        $longitud = $_GET["longitud"];
+        $id = $_GET["value"];
         $deporte = $_SESSION["deporte"];
         $ciudad = $_SESSION["ciudad"];
 
@@ -16,7 +15,7 @@ if ($conection) {
         $queryMiCentro = $conection->query("select c.*, p.hora_apertura,p.hora_cierre
         from centros c inner join pistas_deporte_centro p inner join deportes d
         on c.id_centro= p.id_centro and d.id_deporte = p.id_deporte
-        where d.id_deporte = '$deporte' and c.coordenada_x='$latitud' and coordenada_y='$longitud'
+        where d.id_deporte = '$deporte' and c.id_centro='$id'
         and p.id_centro in (select id_centro from centros where provincia='$ciudad');");
 
 
