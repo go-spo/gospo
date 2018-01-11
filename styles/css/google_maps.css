@@ -2,7 +2,7 @@
 /*============SIZES=============*/
 #map {
   background-color: grey;
-  height: 91vh; }
+  height: 90vh; }
 
 .sidebar {
   height: 89vh; }
@@ -16,7 +16,7 @@
   padding: 0px;
   display: grid;
   grid-template-columns: 0.2fr 1fr;
-  grid-template-rows: 9vh;
+  grid-template-rows: 10vh 90vh;
   grid-template-areas: "header header" "sidebar main"; }
 
 .header {
@@ -37,36 +37,25 @@
   .sidebar {
     width: 100% !important;
     max-width: 100%; }
-  .container-sidebar {
+  #content_sidebar {
     overflow: visible !important; }
   .map-container {
     margin-top: 10px; } }
 
 /* ======================= SIDEBAR GRID =============================*/
-.container-sidebar {
+#content_sidebar {
   margin: 0px;
   padding: 0px;
-  display: grid;
   overflow: auto;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 40vh 50vh;
-  grid-template-areas: "header header" "main main"; }
-
-.main-img_sidebar {
-  grid-area: header;
-  text-align: center; }
+  height: 90vh;
+  padding: 10px;
+  padding-top: 25px; }
 
 .main-img_sidebar > img {
   width: 100%;
   max-height: 100%;
   max-width: 30vw;
   background-size: auto; }
-
-.content_sidebar {
-  grid-area: main;
-  height: max-content;
-  text-align: justify;
-  padding: 10px; }
 
 /* ================== SCROLLBAR ========================= */
 @media (min-width: 1000px) {
@@ -84,3 +73,55 @@
 
 .ui-resizable-handle {
   background-image: none; }
+
+/* ======================== Resultado Centros =======================*/
+.searchable-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.item-card:hover {
+  text-decoration: none;
+  cursor: pointer; }
+
+.panel.panel-horizontal {
+  display: table;
+  margin: 10px;
+  color: black;
+  border-left: 5px solid dodgerblue;
+  background-color: #f0f0f0;
+  border-radius: 0px 4px 4px 0px; }
+
+@media (max-width: 1000px) {
+  .panel.panel-horizontal {
+    width: 45vw; }
+  #center-result {
+    margin-top: 20px; } }
+
+@media (max-width: 591px) {
+  .panel.panel-horizontal {
+    width: auto; } }
+
+.panel-horizontal:hover {
+  background-color: #d3d3d3; }
+
+.panel.panel-horizontal > .panel-body, .panel.panel-horizontal > .panel-footer {
+  display: table-cell;
+  padding: 8px; }
+
+.panel.panel-horizontal > .panel-footer {
+  width: 25%;
+  border: 0;
+  vertical-align: middle; }
+
+.panel.panel-horizontal > .panel-footer > img {
+  position: right;
+  width: 100px;
+  height: 100px;
+  border-radius: 2px; }
+
+.rate-stars > span {
+  color: #F0AD4E;
+  margin-left: 5px;
+  margin-right: 5px; }

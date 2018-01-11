@@ -1,11 +1,10 @@
-$(document).ready(function () {
+function initMap() {
     var markadores = [];
     var centrado = {lat: 39.478758, lng: -0.414405};
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
         center: centrado
-
     });
     $.ajax({
 
@@ -22,17 +21,21 @@ $(document).ready(function () {
                 var marker = new google.maps.Marker({
                     position: posicion,
                     map: map,
+
                     _value: n.id_centro
 
 
                 });
                 marker.addListener('click', function () {
                     infowindow.open(map, marker);
+
                     var id = this._value;
+
                     ///////fumada ajax anidado
                     $.ajax({
                         url: '../model/Maps/sideMaps/datosSeleccionado.php',
                         dataType: 'json',
+
                         data: "value=" + id,
                         success: function (seleccionado) {
                             
@@ -71,6 +74,7 @@ $(document).ready(function () {
                                 barraLateral.insertBefore(centro, barraLateral.childNodes[0]);
 
                             });
+
                         }
                     });
                     //////
@@ -79,4 +83,5 @@ $(document).ready(function () {
             });
         }
     });
-});
+}
+
