@@ -80,10 +80,14 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
             </div>
 
             <div class="sidebar left_inner">
-                <!-- El div de arria existe exclusivamente para el posicionamiento del risizer-->
-                <div class="container-sidebar">
-                    <div class="content_sidebar">
-                        <!-- codigo de todos los deportivos -->
+                <!-- El div de arria existe exclusivamente para el posicionamiento del resizer-->
+                <div id="content_sidebar">
+                    <h2>Resultados</h2>
+                    <div>
+                        <input type="search" class="form-control" id="input-search" placeholder="Busqueda..." >
+                    </div>
+                    <!-- LAS TARJETAS DE BUSQUEDA -->
+                    <div id="center-result" class="searchable-container">
                     </div>
                 </div>
             </div>
@@ -93,6 +97,15 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
         </div>
         <script>
                     $('.left_inner').resizable();
+                    $(function () {
+                        $('#input-search').on('keyup', function () {
+                            var rex = new RegExp($(this).val(), 'i');
+                            $('.searchable-container .item-card').hide();
+                            $('.searchable-container .item-card').filter(function () {
+                                return rex.test($(this).text());
+                            }).show();
+                        });
+                    });
         </script>
     </body>
 </html>

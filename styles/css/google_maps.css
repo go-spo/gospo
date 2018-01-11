@@ -37,36 +37,25 @@
   .sidebar {
     width: 100% !important;
     max-width: 100%; }
-  .container-sidebar {
+  #content_sidebar {
     overflow: visible !important; }
   .map-container {
     margin-top: 10px; } }
 
 /* ======================= SIDEBAR GRID =============================*/
-.container-sidebar {
+#content_sidebar {
   margin: 0px;
   padding: 0px;
-  display: grid;
   overflow: auto;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 40vh 50vh;
-  grid-template-areas: "header header" "main main"; }
-
-.main-img_sidebar {
-  grid-area: header;
-  text-align: center; }
+  height: max-content;
+  padding: 10px;
+  padding-top: 25px; }
 
 .main-img_sidebar > img {
   width: 100%;
   max-height: 100%;
   max-width: 30vw;
   background-size: auto; }
-
-.content_sidebar {
-  grid-area: main;
-  height: max-content;
-  text-align: justify;
-  padding: 10px; }
 
 /* ================== SCROLLBAR ========================= */
 @media (min-width: 1000px) {
@@ -84,3 +73,12 @@
 
 .ui-resizable-handle {
   background-image: none; }
+
+/* ======================== Resultado Centros =======================*/
+.searchable-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.item-card {
+  flex-grow: 1; }
