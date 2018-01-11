@@ -12,6 +12,7 @@ $(document).ready(function () {
                         '<h5>' + n.nombre + '</h5>' +
                         '<h7>Dirección: ' + n.direccion + '</h7>' +
                         '<p> Tlf: vacío</p>' +
+                        '<p class="rate-stars">3,4<span><i class="fas fa-star"></i><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></span>(45)</p>' +
                         '</div>' +
                         '<div class="panel-footer"><img src="' + n.url_img + '"></div>' +
                         ' </div></a>');
