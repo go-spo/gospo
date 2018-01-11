@@ -5,15 +5,16 @@ $(document).ready(function () {
         success: function (centros) {
 
             centros.forEach(n => {
-                $("#center-result").append('<div class="item-card">' +
+                $("#center-result").append('<a href=\"#\"><div class="item-card">' +
+                        '<div class="img-box"><img src="'+n.url_img+'"></div>' +
                         '<div class="info-block">' +
                         '<div class="square-box pull-left">' +
                         '</div>' +
                         '<h5>' + n.nombre + '</h5>' +
-                        '<h7>C/ ' + n.direccion + '</h7>'+
-                        '<h7>Phone: 555-555-5555</h7>' +
+                        '<h7>Dirección: ' + n.direccion + '</h7>' +
+                        '<p> Tlf: vacío</p>' +
                         '</div>' +
-                        '</div>');
+                        '</div></a>');
             });
         }
     });
