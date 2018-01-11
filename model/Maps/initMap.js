@@ -40,7 +40,7 @@ function initMap() {
                         success: function (seleccionado) {
                             
                             seleccionado.forEach(n => {
-                                var barraLateral = document.getElementsByClassName("content_sidebar")[0];
+                                var barraLateral = document.getElementById("center-result");
                                 barraLateral.innerHTML="";
                                 
                                 var centro = document.createElement("div");
