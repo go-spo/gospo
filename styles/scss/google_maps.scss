@@ -2,11 +2,11 @@
 
 #map {
     background-color: grey;
-    height:91vh;
+    height:90vh;
 }
 
 .sidebar{
-    height: 90vh;
+    height: 89vh;
 }
 
 .header{
@@ -41,7 +41,7 @@
     max-width: 75vw;
 }
 
-@media  (max-width: 1000px) {
+@media  (max-width: $super-phablet-media-max-size) {
     .container-grid{
         grid-template-areas:
             "header header"
@@ -57,7 +57,7 @@
     #content_sidebar{
         overflow: visible !important;
     }
-   
+
 
     .map-container{
         margin-top:10px;
@@ -86,7 +86,7 @@
 
 /* ================== SCROLLBAR ========================= */
 
-@media  (min-width: 1000px) {
+@media  (min-width: $super-phablet-media-max-size) {
     ::-webkit-scrollbar {
         width: 10px;
         height: 12px;
@@ -117,23 +117,57 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 
 }
 
 .searchable-container>a:hover{
     text-decoration: none;
-    background-color: #f0f0f0;
 }
 
-.item-card{
-    flex-grow: 1;
-    justify-content: flex-end;
-    border-left: 5px solid lightblue;
-    padding-left:5px;
-    margin-top: 10px;
-    margin-bottom:10px;
+.panel.panel-horizontal {
+    display:table;
+    margin:10px;
     color:black;
+    border-left: 5px solid dodgerblue;
+    background-color: #f0f0f0;
+    border-radius: 0px 4px 4px 0px;
 }
 
-.img-box{
+@media(max-width: $super-phablet-media-max-size) {
+    .panel.panel-horizontal {
+        width: 45vw;
+    }
+
+    #content_sidebar{
+        margin-top: 10px;
+    }
+}
+
+@media(max-width: $phone-media-max-size+91) {
+    .panel.panel-horizontal {
+        width: auto ;
+    }
+}
+
+
+.panel-horizontal:hover{
+    background-color: #d3d3d3;
+}
+
+.panel.panel-horizontal > .panel-body, .panel.panel-horizontal > .panel-footer {
+    display:table-cell;
+    padding: 8px;
+}
+
+.panel.panel-horizontal > .panel-footer {
+    width: 25%;
+    border:0;
+    vertical-align: middle;
+}
+
+.panel.panel-horizontal>.panel-footer>img{
+    position:right;
+    width: 100px;
+    height: 100px;
 }

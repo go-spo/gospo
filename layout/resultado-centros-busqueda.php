@@ -81,16 +81,17 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
 
             <div class="sidebar left_inner">
                 <!-- El div de arria existe exclusivamente para el posicionamiento del resizer-->
-                    <div id="content_sidebar">
-                        <h2>Resultados</h2>
-                        <div>
-                            <input type="search" class="form-control" id="input-search" placeholder="Busqueda..." >
-                        </div>
-                        <!-- LAS TARJETAS DE BUSQUEDA -->
-                        <div id="center-result" class="searchable-container">
-                        </div>
+                <div id="content_sidebar">
+                    <h2>Resultados</h2>
+                    <div>
+                        <input type="search" class="form-control" id="input-search" placeholder="Busqueda..." >
+                    </div>
+                    <!-- LAS TARJETAS DE BUSQUEDA -->
+                    <div id="center-result" class="searchable-container">
+                        
                     </div>
                 </div>
+            </div>
             <div class="map-container">
                 <div id="map"></div>
             </div>
