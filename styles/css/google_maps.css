@@ -81,8 +81,9 @@
   flex-wrap: wrap;
   justify-content: space-between; }
 
-.searchable-container > a:hover {
-  text-decoration: none; }
+.item-card:hover {
+  text-decoration: none;
+  cursor: pointer; }
 
 .panel.panel-horizontal {
   display: table;

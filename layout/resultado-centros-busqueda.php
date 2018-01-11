@@ -88,7 +88,7 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
                     </div>
                     <!-- LAS TARJETAS DE BUSQUEDA -->
                     <div id="center-result" class="searchable-container">
-                        
+
                     </div>
                 </div>
             </div>
