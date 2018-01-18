@@ -115,19 +115,27 @@ $(document).ready(function () {
                                     '<div class="card-body">' +
                                     '<ul class="nav nav-tabs" id="myTab" role="tablist">' +
                                     '  <li class="nav-item">' +
-                                    '    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>' +
+                                    '    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#reservas" role="tab" aria-controls="reservas" aria-selected="true"><i class="fas fa-calendar-alt"></i></a>' +
                                     '  </li>' +
                                     '  <li class="nav-item">' +
-                                    '    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>' +
+                                    '    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false"><i class="fas fa-question-circle"></i></a>' +
                                     '  </li>' +
                                     '  <li class="nav-item">' +
-                                    '    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>' +
+                                    '    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#fotos" role="tab" aria-controls="fotos" aria-selected="false"><i class="fas fa-camera"></i></a>' +
+                                    '  </li>' +
+                                    '  <li class="nav-item">' +
+                                    '    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#mensaje" role="tab" aria-controls="mensaje" aria-selected="false"><i class="fas fa-envelope"></i></a>' +
+                                    '  </li>' +
+                                    '  <li class="nav-item">' +
+                                    '    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#valoracion" role="tab" aria-controls="valoracion" aria-selected="false"><i class="fas fa-star"></i></a>' +
                                     '  </li>' +
                                     '</ul>' +
                                     '<div class="tab-content" id="myTabContent">' +
-                                    '  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">..sasa.</div>' +
-                                    '  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">..sasasssssssss.</div>' +
-                                    '  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">.sas..</div>' +
+                                    '  <div class="tab-pane fade show active" id="reservas" role="tabpanel" aria-labelledby="home-tab">Reservas</div>' +
+                                    '  <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="profile-tab">Información del centro</div>' +
+                                    '  <div class="tab-pane fade" id="fotos" role="tabpanel" aria-labelledby="contact-tab">Fotos</div>' +
+                                    '  <div class="tab-pane fade" id="mensaje" role="tabpanel" aria-labelledby="contact-tab">mensaje</div>' +
+                                    '  <div class="tab-pane fade" id="valoracion" role="tabpanel" aria-labelledby="contact-tab">valoración</div>' +
                                     '</div>' +
                                     '</div>' +
                                     '</div>');
