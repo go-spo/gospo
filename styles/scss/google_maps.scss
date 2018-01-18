@@ -181,37 +181,3 @@
 
 
 /*============   DEPORTIVO SELECTED ================*/
-
-.container-center-result {
-    display: -webkit-flex;
-    display: flex;
-    flex-flow:wrap;
-    width: 100%;
-}
-
-.columna1,.columna2,.columna3{
-    width: 100%;
-}
-
-.columna1{
-    text-align: center;
-}
-
-.columna1>img{
-    max-width: 100%;
-    height: 40vh;
-}
-
-
-.columna2{
-    background-color: #4285F4;
-    height: 10vh;
-    margin-top: -40px;
-    text-align: center;
-    font-weight: bold;
-    
-}
-
-.columna3{
-
-}

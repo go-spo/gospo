@@ -76,10 +76,7 @@ $(document).ready(function () {
 
                         seleccionado.forEach(n => {
                             $("#content_sidebar").empty("");
-                            if ($('.left_inner').resizable()) {
-                                $('.left_inner').resizable('destroy');
-                            }
-                            $('.left_inner').width('550');
+
 
                             $("#content_sidebar").empty("");
                             $("#content_sidebar").append("<button id='volver-resultados-centros'>volver</button><div id='center-result'></div>");
@@ -101,16 +98,38 @@ $(document).ready(function () {
                                 });
                             });
 
-                            $("#center-result").append('<div class="container-center-result">' +
-                                    '<section class="columna1"><img src="' + n.url_img + '"></section>' +
-                                    '<section class="columna2"><p>' + n.nombre + '</p></section>' +
-                                    '<section class="columna3"><hr>'
-                                    + "<p><b>Apertura: </b>" + n.hora_apertura + "</p><hr>" +
-                                    "<p><b>Cierre: </b>" + n.hora_cierre + "</p><hr>" +
-                                    "<p><b>Dirección: </b>" + n.direccion + "</p><hr>" +
-                                    "<p><b>Municipio: </b>" + n.municipio + "</p><hr>" +
-                                    "<p><b>Provincia: </b>" + n.provincia + "</p><hr>" +
-                                    '</section>' +
+                            /*$("#center-result").append('<div class="container-center-result">' +
+                             '<section class="columna1"><img src="' + n.url_img + '"></section>' +
+                             '<section class="columna2"><p>' + n.nombre + '</p></section>' +
+                             '<section class="columna3"><hr>'
+                             + "<p><b>Apertura: </b>" + n.hora_apertura + "</p><hr>" +
+                             "<p><b>Cierre: </b>" + n.hora_cierre + "</p><hr>" +
+                             "<p><b>Dirección: </b>" + n.direccion + "</p><hr>" +
+                             "<p><b>Municipio: </b>" + n.municipio + "</p><hr>" +
+                             "<p><b>Provincia: </b>" + n.provincia + "</p><hr>" +
+                             '</section>' +
+                             '</div>');*/
+
+                            $("#center-result").append('<div class="card mb-3">' +
+                                    '<img class="card-img-top" src="http://lajugadafinanciera.com/wp-content/uploads/2017/06/copa-mundo-tenis-itf.jpg" alt="Card image cap">' +
+                                    '<div class="card-body">' +
+                                    '<ul class="nav nav-tabs" id="myTab" role="tablist">' +
+                                    '  <li class="nav-item">' +
+                                    '    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>' +
+                                    '  </li>' +
+                                    '  <li class="nav-item">' +
+                                    '    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>' +
+                                    '  </li>' +
+                                    '  <li class="nav-item">' +
+                                    '    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>' +
+                                    '  </li>' +
+                                    '</ul>' +
+                                    '<div class="tab-content" id="myTabContent">' +
+                                    '  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">..sasa.</div>' +
+                                    '  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">..sasasssssssss.</div>' +
+                                    '  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">.sas..</div>' +
+                                    '</div>' +
+                                    '</div>' +
                                     '</div>');
                         });
                     }
