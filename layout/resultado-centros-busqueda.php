@@ -38,10 +38,12 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
         <!-- Font Awesome -->
         <script src="../vendor/fontawesome-all.js" type="text/javascript"></script>
         <!-- Google Maps -->
-        <script src="../model/Maps/initMap.js" type="text/javascript"></script>
+        <?php include '../model/Maps/initMap-prueba.php'; ?>
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY&callback=initMap">
+
         </script>
+
         <script src="../model/Maps/sideMaps/datosCentros.js" type="text/javascript"></script>
         <!-- Effects-->
         <script src="../vendor/jquery/effects/slider.js" type="text/javascript"></script>
@@ -84,7 +86,7 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
                 <div id="content_sidebar">
                     <h2 clas="conten_sidebar_title">Resultados</h2>
                     <div>
-                        <input type="search" class="form-control" id="input-search" placeholder="Busqueda..." >
+                        <input type="search" class="form-control" id="input-search" placeholder="Filtrar..." >
                     </div>
                     <!-- LAS TARJETAS DE BUSQUEDA -->
                     <div id="center-result" class="searchable-container">
