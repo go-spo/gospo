@@ -111,6 +111,19 @@
 
 /* ======================== Resultado Centros =======================*/
 
+#volver-resultados-centros{
+    color:#1f77e2;
+    border:none;
+    font-size: 24px;
+    background-color: transparent;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.volver-resultados-centros-texto{
+    font-size: 18px;
+    margin-top: -5px;
+}
 
 .searchable-container{
     display: flex;
@@ -147,7 +160,11 @@
 @media(max-width: $phone-media-max-size+91) {
     .panel.panel-horizontal {
         width: auto ;
-    }   
+    }  
+    
+    #volver-resultados-centros{
+        margin-bottom: 0px;
+    }
 }
 
 
@@ -181,3 +198,7 @@
 
 
 /*============   DEPORTIVO SELECTED ================*/
+
+#btn-reserva{
+    margin-top: 10px;
+}

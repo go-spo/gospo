@@ -26,11 +26,20 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <!-- Google Maps -->
         <link href="../styles/css/google_maps.css" rel="stylesheet" type="text/css"/>
+         <!-- Pickadate -->
+         <link href="../vendor/pickadate/themes/default.css" rel="stylesheet" type="text/css"/>
+         <link href="../vendor/pickadate/themes/default.date.css" rel="stylesheet" type="text/css"/>
+         <link href="../vendor/pickadate/themes/default.time.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!--Jquery and Jquery UI -->
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Pickadate and Pickatime -->
+        <script src="../vendor/pickadate/legacy.js" type="text/javascript"></script>
+        <script src="../vendor/pickadate/picker.js" type="text/javascript"></script>
+        <script src="../vendor/pickadate/picker.date.js" type="text/javascript"></script>
+        <script src="../vendor/pickadate/picker.time.js" type="text/javascript"></script>
         <!-- Bootstrap core JavaScript -->
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Data picker -->
@@ -43,7 +52,6 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY&callback=initMap">
 
         </script>
-
         <script src="../model/Maps/sideMaps/datosCentros.js" type="text/javascript"></script>
         <!-- Effects-->
         <script src="../vendor/jquery/effects/slider.js" type="text/javascript"></script>
