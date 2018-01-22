@@ -20,16 +20,18 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
         <!-- Bootstrap core CSS -->
         <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="../styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
         <!-- Jquery User Interface-->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <!-- Google Maps -->
+        <!-- Custom Google Maps Style -->
         <link href="../styles/css/google_maps.css" rel="stylesheet" type="text/css"/>
-         <!-- Pickadate -->
-         <link href="../vendor/pickadate/themes/default.css" rel="stylesheet" type="text/css"/>
-         <link href="../vendor/pickadate/themes/default.date.css" rel="stylesheet" type="text/css"/>
-         <link href="../vendor/pickadate/themes/default.time.css" rel="stylesheet" type="text/css"/>
+        <!-- Pickadate -->
+        <link href="../vendor/pickadate/themes/default.css" rel="stylesheet" type="text/css"/>
+        <link href="../vendor/pickadate/themes/default.date.css" rel="stylesheet" type="text/css"/>
+        <link href="../vendor/pickadate/themes/default.time.css" rel="stylesheet" type="text/css"/>
+        <!-- MDB -->
+        <link href="../vendor/mdb/css/mdb.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Custom styles for this template -->
+        <link href="../styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
     </head>
     <body>
         <!--Jquery and Jquery UI -->
@@ -42,6 +44,8 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
         <script src="../vendor/pickadate/picker.time.js" type="text/javascript"></script>
         <!-- Bootstrap core JavaScript -->
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- MDB -->
+        <script src="../vendor/mdb/js/mdb.min.js" type="text/javascript"></script>
         <!-- Data picker -->
         <script src="../vendor/jquery/components/data_picker/data_picker.js" type="text/javascript"></script>
         <!-- Font Awesome -->
@@ -81,7 +85,7 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
                                     <a class="nav-link" href="#">Contact</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-primary nav-login" href="#">Log In</a>
+                                    <a class="nav-link btn btn-primary nav-login" href="#"><span class="nav-login-color">Log In</span></a>
                                 </li>
                             </ul>
                         </div>

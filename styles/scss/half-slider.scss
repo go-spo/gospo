@@ -22,7 +22,7 @@
 
 .carousel-caption {
     color: #302D2A;
-    margin-bottom:10vh;
+    margin-bottom:20vh;
 }
 
 /*-------------- CAROUSEL DESCRIPTION -----------*/
@@ -48,7 +48,7 @@
 }
 
 .navbar-brand{
-    
+
 }
 
 .navbar-collapse {
@@ -68,23 +68,30 @@
     color: tomato;
 }
 
+.nav-link-text{
+    color:tomato !important;
+}
+
 .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
-    color: #0069D9;
+    color: #0069D9 !important;
+}
+
+.nav-login:focus, .nav-login:hover {
+    color: white !important;
 }
 
 .navbar-dark .navbar-nav .show > .nav-link,
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-    color: #0069D9;
+    color: #0069D9 !important;
 }
 
 /*--------------- LOGIN --------------*/
 .nav-login{
-    background-color:tomato;
+    background-color:tomato !important;
     border: 1px solid tomato;
     padding:3px 3px 3px 3px;
-    color:white !important;
     margin-top:4px;
     margin-left:4px;
 }
@@ -136,7 +143,6 @@
 .form-group-btn{
     margin-top:10px;
     margin-bottom:10px;
-    margin-right:20px;
 }
 
 .form-group, .form-group-btn{
@@ -154,18 +160,18 @@
 
 .btn-browser{
     width:100px;
-}
-
-.py-5 {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
+    padding: 10px;
+    margin:0px !important;
 }
 
 /*------------------ Date picker ---------------*/
-/*Esta clase llamadas compartidas fuera de este trozo*/
+/*Esta clase llamadas compartidas fuera de este trozo
 .date-picker{
-    width:40%;
+    width:47% !important;
     cursor: pointer;
+    color:white;
+    padding: 0px !important;
+    padding-left: 30px !important;
 }
 
 .date-picker-container{
@@ -177,11 +183,7 @@
     top: 5px;
     left: 10px;
     color:$date-picker-icon-color;
-}
-
-#from,#to{
-    padding-left:30px;
-}
+}*/
 
 
 @media  (max-width: $phablet-media-max-size) {
