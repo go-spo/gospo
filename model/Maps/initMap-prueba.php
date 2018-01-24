@@ -6,9 +6,9 @@
         var prev_infowindow;
         var centrado = {lat: 39.478758, lng: -0.414405};
         var positionSelected = "<?php echo $_SESSION["ciudad"] ?>";
-        $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + positionSelected + "&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY", function (data) {
+        $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + positionSelected + ",España&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY", function (data) {
             centrado = {lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng};
-             map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 9,
                 center: centrado
             });
@@ -77,9 +77,7 @@
                                             $('.left_inner').resizable('destroy');
                                         }
                                         $('.left_inner').width('30vw');
-                                        $("#content_sidebar").append("<div id='center-result'></div>");
-
-
+                                        $("#content_sidebar").append("<button id='volver-resultados-centros'><i class=\"fas fa-angle-double-left\"></i> <span class='volver-resultados-centros-texto'> Atras</span></button><div id='center-result'></div>");
                                         $("#center-result").append('<div class="card mb-3">' +
                                                 '<img class="card-img-top" src="' + n.url_img + '" alt="Card image cap">' +
                                                 '<div class="card-body">' +
@@ -113,6 +111,23 @@
                                                 '</div>' +
                                                 '</div>' +
                                                 '</div>');
+                                        $('#volver-resultados-centros').click(function () {
+                                            $('.left_inner').resizable();
+                                            $("#content_sidebar").empty("");
+                                            $("#content_sidebar").append('<h2 clas="conten_sidebar_title">Resultados</h2>' +
+                                                    '<div><input type="search" class="form-control" id="input-search" placeholder="Filtrar..." >' +
+                                                    '</div><!-- LAS TARJETAS DE BUSQUEDA -->' +
+                                                    '<div id="center-result" class="searchable-container">' +
+                                                    resultados +
+                                                    '</div>');
+                                            $('#input-search').on('keyup', function () {
+                                                var rex = new RegExp($(this).val(), 'i');
+                                                $('.searchable-container .item-card').hide();
+                                                $('.searchable-container .item-card').filter(function () {
+                                                    return rex.test($(this).text());
+                                                }).show();
+                                            });
+                                        });
                                     });
 
                                     $('.datepicker').pickadate({

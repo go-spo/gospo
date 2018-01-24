@@ -17,8 +17,12 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <!-- MDB -->
         <link href="vendor/mdb/css/mdb.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Flickty -->
+        <link href="vendor/flickty/flickty.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
-        <link href="styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
+        <link href="styles/css/half-slider.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/css/sports_selection.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <!--Jquery and Jquery UI -->
@@ -28,11 +32,11 @@
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- MDB -->
         <script src="vendor/mdb/js/mdb.min.js" type="text/javascript"></script>
-        <!-- Data picker -->
-        <script src="vendor/jquery/components/data_picker/data_picker.js" type="text/javascript"></script>
         <!-- Font Awesome -->
         <script src="vendor/fontawesome-all.js" type="text/javascript"></script>
         <script src="vendor/jquery/effects/slider.js" type="text/javascript"></script>
+        <!-- Flickty -->
+        <script src="vendor/flickty/flickty.js" type="text/javascript"></script>
 
         <!-- Navigation -->
         <nav id="main-header-effect" class="navbar navbar-expand-lg navbar-dark bg-main-header-custom fixed-top">
@@ -65,30 +69,36 @@
         </nav>
 
         <header>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                <!--Indicators-->
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
                 </ol>
-                <div class="carousel-inner" role="listbox">
+                <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner main-img-caoursel" role="listbox">
 
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <!--/.Slides-->
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
+                <!--/.Controls-->
             </div>
         </header>
 
         <!-- Page Content -->
         <section id="browser-effect">
             <div class="main-container">
-                <div class="browser">
+                <div class="browser animated zoomIn">
                     <form class="form-browser" action="layout/resultado-centros-busqueda.php" method="POST">
                         <div class="form-group" style="flex-grow: 3">
                             <div class="searchDataList">
@@ -111,16 +121,102 @@
                 </div>
             </div>
         </section>
+        <!-- Bloque seleccion deportes -->
+        <section class="busqueda-deportes">
+            <form  action="layout/resultado-centros-busqueda.php" method="POST">
+                <div id="deportes" class="deportes-seleccion" >
+                    <header><h2 class="cabecera-selecciones">Deportes de moda</h2></header>
+
+                    <div class="container wow fadeInLeft">
+                        <div id="deportes-moda" class="carousel deportes-moda">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- Flickity HTML init -->
+
+
         <!-- Footer -->
-        <footer class="footer">
+
+
+        <!--Footer-->
+        <footer class="page-footer center-on-small-only elegant-color lighten-3 wow fadeInUp">
+
+            <!--Footer Links-->
             <div class="container">
-                <p class="m-0 text-center text-white">&copy; Gospo 2017</p>
+                <div class="row my-4">
+
+                    <!--First column-->
+                    <div class="col-md-4 col-lg-4">
+                        <h5 class="title mb-4 font-bold">Sobre nosotros</h5>
+                        <hr class="info-color accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>Gospo es una plataforma online cuya misión es permitir a los centros deportivos ofrecer sus vacantes a clientes geolocalizados.</p>
+                    </div>
+                    <!--/.First column-->
+
+                    <hr class="clearfix w-100 d-md-none grey darken-3">
+
+                    <!--Second column-->
+                    <div class="col-md-2 col-lg-2 ml-auto">
+                        <h5 class="title mb-4 font-bold">Enlaces</h5>
+                        <hr class="info-color accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <ul>
+                            <li><a href="https://danialba96.wixsite.com/gospo">BLOG</a></li>
+                        </ul>
+                    </div>
+                    <!--/.Second column-->
+
+                    <hr class="clearfix w-100 d-md-none grey darken-3">
+
+                    <!--Third column-->
+                    <div class="col-md-4 col-lg-3">
+                        <h5 class="title mb-4 font-bold">Contacto</h5>
+                        <hr class="info-color accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <!--Info-->
+                        <p><i class="fa fa-home mr-3"></i> Dolores Ibárruri, 46920 Mislata, Valencia</p>
+                        <p><i class="fa fa-envelope mr-3"></i> gospodaw@gmail.com</p>
+                        <p><i class="fa fa-phone mr-3"></i> 635196098</p>
+                    </div>
+                    <!--/.Third column-->
+
+                    <hr class="clearfix w-100 d-md-none grey darken-3">
+
+                    <!--Fourth column-->
+                    <div class="col-md-2 col-lg-2 text-center">
+                        <h5 class="title mb-4 font-bold">Siguenos</h5>
+                        <hr class="info-color accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <!--Social buttons-->
+                        <div class="social-section mt-2 ">
+                            <!--Facebook-->
+                            <a class="btn-floating btn-lg"><i class="fab fa-facebook-square"></i></a>
+                            <!--Twitter-->
+                            <a class="btn-floating btn-lg"><i class="fab fa-twitter-square"></i></a>
+                            <!--Instagram -->
+                            <a class="btn-floating btn-lg"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <!--/.Fourth column-->
+
+                </div>
             </div>
-            <!-- /.container -->
-        </footer>   
+            <!--/.Footer Links-->
+
+            <!--Copyright-->
+            <div class="footer-copyright">
+                <div class="container-fluid">
+                    © 2017 Copyright: Gospo
+
+                </div>
+            </div>
+            <!--/.Copyright-->
+
+        </footer>
+        <!--/.Footer-->
         <script src="model/categories/categorias.js" type="text/javascript"></script>
         <script src="model/browser/selects.js" type="text/javascript"></script>
         <script src="model/carousel/carruselIMG.js" type="text/javascript"></script>
+        <script src="model/seleccion/seleccion_deportes.js" type ="text/javascript"></script>
     </body>
 
 </html>

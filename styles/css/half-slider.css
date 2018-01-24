@@ -83,18 +83,14 @@
   display: none; }
 
 /*============================ FOOTER ================================*/
-.footer {
-  background-color: #302D2A;
-  padding: 10px 0px 10px 0px; }
+.page-footer {
+  margin-top: 10vh !important; }
 
 /*============================ BROWSER ================================*/
 .browser {
   position: absolute;
   width: 100%;
   top: 30vh; }
-
-#browser-effect {
-  display: none; }
 
 .form-browser {
   display: flex;
@@ -127,6 +123,9 @@
   width: 100px;
   padding: 10px;
   margin: 0px !important; }
+
+.busqueda-deportes {
+  margin-top: 5vh; }
 
 /*------------------ Date picker ---------------*/
 /*Esta clase llamadas compartidas fuera de este trozo

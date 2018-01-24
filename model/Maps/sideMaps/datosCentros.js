@@ -48,7 +48,7 @@ $(document).ready(function () {
                 return resultado;
             }
 
-            var resultados = "";
+            resultados = "";
             centros.forEach(n => {
                 resultados = resultados + '<div id="' + n.id_centro + '" class="item-card panel panel-default panel-horizontal">' +
                         '<div class="panel-body">' +
