@@ -1,0 +1,83 @@
+/*============COLORS=============*/
+/*============SIZES=============*/
+.contenedor__carrito {
+  display: flex;
+  flex-direction: column; }
+
+.carrito__productos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; }
+
+.carrito__item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px; }
+
+.carrito__item__imagen {
+  display: flex;
+  flex-grow: 4;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  background-repeat: no-repeat;
+  margin: 2px; }
+
+.carrito__valores {
+  flex-grow: 5;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.carrito__item__boton {
+  flex-grow: 1; }
+
+.carrito__item__descripcion {
+  margin: 10px;
+  flex-grow: 1; }
+
+.carrito__item__horario {
+  margin: 10px;
+  flex-grow: 1; }
+
+.carrito__item__precio {
+  margin: 10px;
+  flex-grow: 1; }
+
+.boton__carrito--cancelar {
+  color: tomato;
+  border: none;
+  background-color: white; }
+  .boton__carrito--cancelar :hover {
+    cursor: pointer; }
+
+.carrito__footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  text-align: right;
+  padding-right: 25px; }
+
+.carrito__footer--precio-total {
+  flex-grow: 1; }
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.modal-header {
+  background-color: #4285F4;
+  color: white; }
+
+hr {
+  height: 3px; }

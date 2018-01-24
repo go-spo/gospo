@@ -118,6 +118,8 @@ $(document).ready(function () {
                     success: function (seleccionado) {
 
                         seleccionado.forEach(n => {
+                            
+                             var datosJson = n.id_centro + ":" + n.id_deporte + ":" + n.precio_hora + ":" + n.url_img + ":" + n.direccion + ":" + n.municipio;
                             id_centro = n.id_centro;
                             id_deporte = n.id_deporte;
                             $("#content_sidebar").empty("");
@@ -171,7 +173,7 @@ $(document).ready(function () {
                                     /*RESERVAS*/'  <div class="tab-pane fade show active" id="reservas" role="tabpanel" aria-labelledby="home-tab">' +
                                     '<hr><h5>Día:</h5><input class="datepicker">' +
                                     '<hr><h5>Hora:</h5><input class="timepicker" readonly>' +
-                                    '<hr><br><button id="btn-reserva" class="btn btn-info">Reservar</button>' +
+                                    '<hr><br><button id="btn-reserva" data="' + datosJson + '" class="btn btn-info">Reservar</button>' +
                                     '</div>' +
                                     /*INFO*/'  <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="profile-tab" style="padding-top:10px">' +
                                     '<p><b>Nombre: </b>' + n.nombre + '</p><hr>' +
@@ -187,9 +189,44 @@ $(document).ready(function () {
                                     '</div>' +
                                     '</div>' +
                                     '</div>');
+                             // ------------- BOTON RESERVAR --------------- // 
+                            $("#reservas").ready(function () {
+                                $("#btn-reserva").on("click", function () {
+                                    datos = $(this).attr("data");
+                                    datosSplit = datos.split(":");
+
+
+                                    var horaSelect = tiempoElegido;
+                                    console.log(tiempoElegido);
+                                    //     var fechaSelect = ($("#input_datepicker").val());
+                                    var fechaSelect = fechaElegida;
+                                    var pistaSelect = 1;
+                                    
+                                    var id = datosSplit[0] + datosSplit[1] + pistaSelect + horaSelect + fechaSelect;
+                                    reserva = {id: id, id_centro: datosSplit[0], id_deporte: datosSplit[1], precio_hora: datosSplit[2], imagen: datosSplit[3], direccion: datosSplit[4], municipio: datosSplit[5], pista: pistaSelect, hora: horaSelect, fecha: fechaSelect};
+                                    if (localStorage.getItem("carro") === null) {
+                                        var reservas = [];
+                                        reservas.push(reserva);
+                                        localStorage.setItem("carro", JSON.stringify(reservas));
+                                        articulos();
+                                        console.log("hola");
+                                    } else {
+                                        jcarro = localStorage.getItem("carro");
+                                        var carro = JSON.parse(jcarro);
+                                        carro.push(reserva);
+                                        localStorage.setItem("carro", JSON.stringify(carro));
+                                        articulos();
+                                        console.log("ass");
+                                    }
+
+
+                                });
+
+                            });
+                            ////////////////////////
                         });
 
-                        $('.datepicker').pickadate({
+                      $('.datepicker').pickadate({
                             monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                             monthsShort: ['En', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
                             weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
@@ -222,7 +259,10 @@ $(document).ready(function () {
                                             interval: 60,
                                             min: [10, 00],
                                             max: [22, 0],
-                                            disable: resultado
+                                            disable: resultado,
+                                            onSet: function () {
+                                                tiempoElegido = this.get('select', 'H:i');
+                                            }
                                         });
                                         tpicker = timePicker.pickatime('picker');
                                         if (resultado.length !== 0) {
@@ -232,13 +272,18 @@ $(document).ready(function () {
                                         }
                                     }
                                 });
+
+                                fechaElegida = this.get('select', 'yyyy-mm-dd');
+
                             }
+
                         });
                     }
                 });
             });
         }
     });
+
 });
 
 

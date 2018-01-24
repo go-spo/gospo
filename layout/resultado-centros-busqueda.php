@@ -38,6 +38,8 @@ if (isset($_GET["deporte"])) {
         <link href="../vendor/mdb/css/mdb.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="../styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
+         <!-- Carro compra-->
+        <link href="../styles/css/carro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!--Jquery and Jquery UI -->
@@ -63,6 +65,8 @@ if (isset($_GET["deporte"])) {
 
         </script>
         <script src="../model/Maps/sideMaps/datosCentros.js" type="text/javascript"></script>
+         <!-- Carro compra-->
+        <script src="../model/cart/modal.js" type="text/javascript"></script>
         <!-- Effects-->
         <script src="../vendor/jquery/effects/slider.js" type="text/javascript"></script>
 
@@ -94,6 +98,9 @@ if (isset($_GET["deporte"])) {
                                     <a class="nav-link btn btn-primary nav-login" href="#"><span class="nav-login-color">Log In</span></a>
                                 </li>
                             </ul>
+                            <button type="button" class=" nav-item__carro" data-toggle="modal" data-target="#Modal__carrito">
+                                <i class="fab fa-opencart fa-lg"></i><span class="nav-item__carro__contador"></span>
+                            </button>
                         </div>
                     </div>
                 </nav>
@@ -116,6 +123,29 @@ if (isset($_GET["deporte"])) {
                 <div id="map"></div>
             </div>
         </div>
+         <!-- Modal -->
+        <div class="modal fade right" id="Modal__carrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg modal-right" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">RESERVAS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="modal-body" id="carrito__contenido">
+
+                    </div>
+                    <hr>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" id="boton__vaciar" class="btn btn-secondary ">Vaciar</button>
+                        <button type="button" id="boton__reservar" class="btn btn-primary ">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
         <script>
                     $('.left_inner').resizable();
                     $(function () {
