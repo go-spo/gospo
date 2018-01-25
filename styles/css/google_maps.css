@@ -142,6 +142,25 @@
   margin-left: 5px;
   margin-right: 5px; }
 
+.nav-tabs > .nav-item:nth-child(1) > .nav-link {
+  color: #E44C4C !important; }
+
+.nav-tabs > .nav-item:nth-child(2) > .nav-link {
+  color: #BB6F79 !important; }
+
+.nav-tabs > .nav-item:nth-child(3) > .nav-link {
+  color: #998C9E !important; }
+
+.nav-tabs > .nav-item:nth-child(4) > .nav-link {
+  color: #72ADC8 !important; }
+
+.nav-tabs > .nav-item:nth-child(5) > .nav-link {
+  color: #4FCCF0 !important; }
+
 /*============   DEPORTIVO SELECTED ================*/
 #btn-reserva {
   margin-top: 10px; }
+
+/* ============ PickaDate =========================== */
+#reservas td {
+  font-size: 1em !important; }

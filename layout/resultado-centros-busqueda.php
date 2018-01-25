@@ -23,6 +23,8 @@ if (isset($_GET["deporte"])) {
         <title>Gospo</title>
         <!-- FAVICON -->
         <link rel="icon" type="image/png" href="../resources/img/favicon.png" />
+        <!-- MDB -->
+        <link href="../vendor/mdb/css/mdb.min.css" rel="stylesheet" type="text/css"/>
         <!-- Bootstrap core CSS -->
         <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -34,8 +36,6 @@ if (isset($_GET["deporte"])) {
         <link href="../vendor/pickadate/themes/default.css" rel="stylesheet" type="text/css"/>
         <link href="../vendor/pickadate/themes/default.date.css" rel="stylesheet" type="text/css"/>
         <link href="../vendor/pickadate/themes/default.time.css" rel="stylesheet" type="text/css"/>
-        <!-- MDB -->
-        <link href="../vendor/mdb/css/mdb.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="../styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
         <!-- Carro compra-->
@@ -62,7 +62,6 @@ if (isset($_GET["deporte"])) {
         <?php include '../model/Maps/initMap-prueba.php'; ?>
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY&callback=initMap">
-
         </script>
         <script src="../model/Maps/sideMaps/datosCentros.js" type="text/javascript"></script>
         <!-- Carro compra-->
@@ -139,9 +138,9 @@ if (isset($_GET["deporte"])) {
                     </div>
                     <hr>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" id="boton__vaciar" class="btn btn-secondary ">Vaciar</button>
-                        <button type="button" id="boton__reservar" class="btn btn-primary ">Reservar</button>
+                        <button type="button" class="btn btn-secondary btn-secondary-carro" data-dismiss="modal">Cerrar</button>
+                        <button type="button" id="boton__vaciar" class="btn btn-secondary btn-secondary-carro">Vaciar</button>
+                        <button type="button" id="boton__reservar" class="btn btn-primary btn-primary-carro">Reservar</button>
                     </div>
                 </div>
             </div>
@@ -160,7 +159,7 @@ if (isset($_GET["deporte"])) {
                         <h6> Esta pista ya esta añadida a tu lista</h6>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary btn-secondary-carro" data-dismiss="modal">Cerrar</button>
 
                     </div>
                 </div>
@@ -180,8 +179,8 @@ if (isset($_GET["deporte"])) {
                         <h6>Compra realizada con exito</h6>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                       
+                        <button type="button" class="btn btn-secondary btn-secondary-carro" data-dismiss="modal">Cerrar</button>
+
                     </div>
                 </div>
             </div>
@@ -200,13 +199,13 @@ if (isset($_GET["deporte"])) {
                         <h6>¿Realizar la reserva y pago?</h6>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary boton--pagar-reservar">Reservar</button>
+                        <button type="button" class="btn btn-secondary btn-secondary-carro" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary boton--pagar-reservar btn-primary-carro">Reservar</button>
                     </div>
                 </div>
             </div>
         </div>
-    
+
         <script>
                     $('.left_inner').resizable();
                     $(function () {

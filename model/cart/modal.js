@@ -8,11 +8,6 @@ $(document).ready(function () {
     $(".nav-item__carro").on("click", function () {
 
         var url = "";
-        if (document.referrer === "http://localhost/gospo/index.html") {
-            url = "url(\'../resources/img/Centros/olimpia.jpg\')";
-        } else {
-            url = "url(\'resources/img/Centros/olimpia.jpg\')";
-        }
 
         var myvar = '<div class="contenedor__carrito">' + ' <div class="carrito__productos">';
         var precioFinal = 0;
@@ -25,21 +20,40 @@ $(document).ready(function () {
 
             var url = "";
             if (document.referrer === "http://localhost/gospo/index.html") {
-                url = "url(\'" + n.imagen + "\')";
+                url = n.imagen;
             } else {
-                url = "url(\'" + n.imagen.substring(3) + "\')";
+                url = n.imagen.substring(3);
             }
-            myvar += '<div id="' + n.id + '"class="carrito__item">' +
-                    ' <div class="carrito__item__imagen" style="background-image:' + url + ';" ></div>' +
-                    ' <div class="carrito__valores">' +
-                    '<div class="carrito__item__descripcion">' + n.direccion + '<p>' + n.municipio + '</p></div>' +
-                    '<div class="carrito__item__horario"><strong>Hora inicio:</strong>' + n.hora + '<p><strong>Fecha: </strong>' + n.fecha + '</p> </div>' +
-                    '<div class="carrito__item__precio"><strong>Precio:</strong>' + n.precio_hora + '€</div>' +
-                    ' <div class="carrito__item__boton"><button type="button" class="boton__carrito--cancelar"><i class="fas fa-times-circle"></i></button></div></div><hr></div></div>';
+
+            myvar += '   <div id="' + n.id + '" class="card card-cascade narrower">  ' +
+                    '                <!--Card image-->  ' +
+                    '                <div class="view overlay hm-white-slight">  ' +
+                    '                <img src="' + url + '" class="img-fluid" alt="">  ' +
+                    '                <a>  ' +
+                    '                <div class="mask"></div>  ' +
+                    '                </a>  ' +
+                    '                </div>  ' +
+                    '                <!--/.Card image-->  ' +
+                    '                <a class="btn btn-circle-sm boton__carrito--cancelar">X</a>  ' +
+                    '                <!--Card content-->  ' +
+                    '                <div class="card-body">  ' +
+                    '                <h5>Culinary</h5>  ' +
+                    '                <!--Title-->  ' +
+                    '                <h4 class="card-title">' + n.direccion + ',&nbsp;&nbsp;' + n.municipio + '</h4>  ' +
+                    '                <!--Text-->  ' +
+                    '                <p class="card-text"><b>Hora:' + n.hora + '</b></p>  ' +
+                    '                <hr>  ' +
+                    '                <p class="card-text"><b>Fecha: ' + n.fecha + '</b></p>  ' +
+                    '                <hr>  ' +
+                    '                <p class="card-text"><b>Precio: ' + n.precio_hora + '</b></p>  ' +
+                    '                </div>  ' +
+                    '               </div>  ';
+
             precioFinal += parseFloat(n.precio_hora);
+
         });
 
-        myvar += '<div class="carrito__footer">' +
+        myvar += '<hr><div class="carrito__footer">' +
                 '<div class="carrito__footer--precio-total"><strong>Precio Total: </strong><span id="carrito__precioTotal">' + precioFinal + ' €</span></div>' +
                 '</div>' +
                 '</div>';
@@ -53,7 +67,7 @@ $(document).ready(function () {
         $(".contenedor__carrito").ready(function () {
             $(".boton__carrito--cancelar").on("click", function () {
 
-                var id_padre = $(this).parent().parent().parent().attr("id");
+                var id_padre = $(this).parent().attr("id");
                 console.log(id_padre);
                 //borra el elemento de la memoria
                 listadoItems = localStorage.getItem("carro");
@@ -63,10 +77,15 @@ $(document).ready(function () {
                         items.splice(i, 1);
                     }
                 }
+
                 localStorage.setItem("carro", JSON.stringify(items));
                 //borra elemento del html
                 var reservaBorrar = document.getElementById(id_padre);
-                reservaBorrar.parentNode.removeChild(reservaBorrar);
+                $($(this).parent()).addClass('animated zoomOut');
+                setTimeout(function () {
+                    reservaBorrar.parentNode.removeChild(reservaBorrar);
+                }, 300);
+                
                 precioTotal();
                 articulos();
             });
@@ -97,7 +116,7 @@ $(document).ready(function () {
 
                 $("#Modal__carrito").modal("hide");
                 $("#Comprar-Reservas").modal("hide");
-       //llama a modal de compra con exito         
+                //llama a modal de compra con exito         
                 $("#ReservaRealizada").modal("show");
                 $("#carrito__contenido").html("");
                 localStorage.removeItem("carro");

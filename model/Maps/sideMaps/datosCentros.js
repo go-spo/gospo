@@ -74,8 +74,10 @@ $(document).ready(function () {
                         seleccionado.forEach(n => {
                             markadores.forEach(n => {
                                 if (id == n._value) {
-                                    map.panTo(n.getPosition());
-                                    map.setZoom(12);
+                                    /*
+                                     map.panTo(n.getPosition());
+                                     map.setZoom(12);
+                                     */
                                     n.setAnimation(google.maps.Animation.BOUNCE);
                                 } else {
                                     n.setAnimation(null);
@@ -100,7 +102,8 @@ $(document).ready(function () {
                             markadores.forEach(n => {
                                 if (id == n._value) {
                                     map.panTo(n.getPosition());
-                                    map.setZoom(15);
+                                    map.setZoom(13);
+
                                     n.setAnimation(google.maps.Animation.BOUNCE);
                                 } else {
                                     n.setAnimation(null);
@@ -297,7 +300,38 @@ $(document).ready(function () {
             });
         }
     });
-  
+
+    $(".boton--add").on("click", function () {
+        if (localStorage.getItem("carro") === null) {
+            var reservas = [];
+            reservas.push(reserva);
+            localStorage.setItem("carro", JSON.stringify(reservas));
+            articulos();
+            console.log("hola");
+            $("#addReserva").modal("hide");
+        } else {
+            var add = true;
+            jcarro = localStorage.getItem("carro");
+            var carro = JSON.parse(jcarro);
+            for (var i = 0; i < carro.length; i++) {
+                if (carro[i].id === reserva.id) {
+                    add = false;
+                }
+            }
+            if (add) {
+                carro.push(reserva);
+                localStorage.setItem("carro", JSON.stringify(carro));
+                articulos();
+                console.log("ass");
+                $("#addReserva").modal("hide");
+            } else {
+                $("#addReserva").modal("hide");
+                $("#reservaRepetida").modal("show");
+
+            }
+        }
+    });
+
 });
 
 
