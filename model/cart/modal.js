@@ -3,6 +3,13 @@
 
 $(document).ready(function () {
     articulos();
+//    $('.boton--pagar-reservar').on("click", function () {
+//        $('#alertaCompra').show("fade");
+//
+//        setTimeOut(function () {
+//            $('#alertaCompra').hide("fade");
+//        }, 3000);
+//    });
 
 
     $(".nav-item__carro").on("click", function () {
@@ -14,54 +21,59 @@ $(document).ready(function () {
 
         var jcarro = localStorage.getItem("carro");
         var carro = JSON.parse(jcarro);
+        if (carro === null) {
+            $("#carrito__contenido").html("");
+            var carroEmpty = "<h5>No tienes ningún articulo en el carro</h5>";
+            $("#carrito__contenido").append(carroEmpty);
+        } else {
 
 
-        carro.forEach(n => {
+            carro.forEach(n => {
 
-            var url = "";
-            if (document.referrer === "http://localhost/gospo/index.html") {
-                url = n.imagen;
-            } else {
-                url = n.imagen.substring(3);
-            }
+                var url = "";
+                if (document.referrer === "http://localhost/gospo/index.html") {
+                    url = n.imagen;
+                } else {
+                    url = n.imagen.substring(3);
+                }
 
-            myvar += '   <div id="' + n.id + '" class="card card-cascade narrower">  ' +
-                    '                <!--Card image-->  ' +
-                    '                <div class="view overlay hm-white-slight">  ' +
-                    '                <img src="' + url + '" class="img-fluid" alt="">  ' +
-                    '                <a>  ' +
-                    '                <div class="mask"></div>  ' +
-                    '                </a>  ' +
-                    '                </div>  ' +
-                    '                <!--/.Card image-->  ' +
-                    '                <a class="btn btn-circle-sm boton__carrito--cancelar">X</a>  ' +
-                    '                <!--Card content-->  ' +
-                    '                <div class="card-body">  ' +
-                    '                <h5>Culinary</h5>  ' +
-                    '                <!--Title-->  ' +
-                    '                <h4 class="card-title">' + n.direccion + ',&nbsp;&nbsp;' + n.municipio + '</h4>  ' +
-                    '                <!--Text-->  ' +
-                    '                <p class="card-text"><b>Hora:' + n.hora + '</b></p>  ' +
-                    '                <hr>  ' +
-                    '                <p class="card-text"><b>Fecha: ' + n.fecha + '</b></p>  ' +
-                    '                <hr>  ' +
-                    '                <p class="card-text"><b>Precio: ' + n.precio_hora + '</b></p>  ' +
-                    '                </div>  ' +
-                    '               </div>  ';
+                myvar += '   <div id="' + n.id + '" class="card card-cascade narrower">  ' +
+                        '                <!--Card image-->  ' +
+                        '                <div class="view overlay hm-white-slight">  ' +
+                        '                <img src="' + url + '" class="img-fluid" alt="">  ' +
+                        '                <a>  ' +
+                        '                <div class="mask"></div>  ' +
+                        '                </a>  ' +
+                        '                </div>  ' +
+                        '                <!--/.Card image-->  ' +
+                        '                <a class="btn btn-circle-sm boton__carrito--cancelar">X</a>  ' +
+                        '                <!--Card content-->  ' +
+                        '                <div class="card-body">  ' +
+                        '                <h4 style="color:' + n.color + '";><b>' + n.deporte + '</b></h4>  ' +
+                        '                <!--Title-->  ' +
+                        '                <h4 class="card-title">' + n.direccion + ',&nbsp;&nbsp;' + n.municipio + '</h4>  ' +
+                        '                <!--Text-->  ' +
+                        '                <p class="card-text"><b>Hora:' + n.hora + '</b></p>  ' +
+                        '                <hr>  ' +
+                        '                <p class="card-text"><b>Fecha: ' + n.fecha + '</b></p>  ' +
+                        '                <hr>  ' +
+                        '                <p class="card-text"><b>Precio: ' + n.precio_hora + '</b></p>  ' +
+                        '                </div>  ' +
+                        '               </div>  ';
 
-            precioFinal += parseFloat(n.precio_hora);
+                precioFinal += parseFloat(n.precio_hora);
 
-        });
+            });
 
-        myvar += '<hr><div class="carrito__footer">' +
-                '<div class="carrito__footer--precio-total"><strong>Precio Total: </strong><span id="carrito__precioTotal">' + precioFinal + ' €</span></div>' +
-                '</div>' +
-                '</div>';
+            myvar += '<hr><div class="carrito__footer">' +
+                    '<div class="carrito__footer--precio-total"><strong>Precio Total: </strong><span id="carrito__precioTotal">' + precioFinal + ' €</span></div>' +
+                    '</div>' +
+                    '</div>';
 
-        $("#carrito__contenido").html("");
-        $("#carrito__contenido").append(myvar);
+            $("#carrito__contenido").html("");
+            $("#carrito__contenido").append(myvar);
 
-
+        }
         // Carga de functiones en botones del carro  //
 
         $(".contenedor__carrito").ready(function () {
@@ -85,7 +97,7 @@ $(document).ready(function () {
                 setTimeout(function () {
                     reservaBorrar.parentNode.removeChild(reservaBorrar);
                 }, 300);
-                
+
                 precioTotal();
                 articulos();
             });
@@ -95,6 +107,7 @@ $(document).ready(function () {
 
                 localStorage.removeItem("carro");
                 $(".nav-item__carro__contador").text("");
+                $("#Modal__carrito").modal("hide");
 
             });
             $("#boton__reservar").on("click", function () {
@@ -105,6 +118,9 @@ $(document).ready(function () {
         });
     });
     $(".boton--pagar-reservar").on("click", function () {
+        
+        
+        
         var envio = localStorage.getItem("carro");
 
 
@@ -117,10 +133,14 @@ $(document).ready(function () {
                 $("#Modal__carrito").modal("hide");
                 $("#Comprar-Reservas").modal("hide");
                 //llama a modal de compra con exito         
-                $("#ReservaRealizada").modal("show");
+                //    $("#ReservaRealizada").modal("show");
                 $("#carrito__contenido").html("");
                 localStorage.removeItem("carro");
                 $(".nav-item__carro__contador").text("");
+                $('.datepicker').val("");
+                $('.timepicker').val("");
+                
+
             }
 
 

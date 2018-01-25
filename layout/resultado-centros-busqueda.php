@@ -187,7 +187,7 @@ if (isset($_GET["deporte"])) {
         </div>
         <!-- Modal Realizar Pedido Reservas-->
         <div class="modal fade" id="Comprar-Reservas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-side modal-bottom-right" role="document">
+            <div class="modal-dialog modal-side modal-top-right" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLabel">Reservas</h4>

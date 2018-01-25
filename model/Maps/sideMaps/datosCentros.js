@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    $("#alert-target").click(function () {
+    toastr["info"]("I was launched via jQuery!")
+});
     $.ajax({
         url: '../model/Maps/sideMaps/datosCentros.php',
         dataType: 'json',
@@ -122,7 +125,7 @@ $(document).ready(function () {
 
                         seleccionado.forEach(n => {
 
-                            var datosJson = n.id_centro + ":" + n.id_deporte + ":" + n.precio_hora + ":" + n.url_img + ":" + n.direccion + ":" + n.municipio;
+                            var datosJson = n.id_centro + ":" + n.id_deporte + ":" + n.precio_hora + ":" + n.url_img + ":" + n.direccion + ":" + n.municipio  + ":" + n.deporte + ":" + n.color;
                             id_centro = n.id_centro;
                             id_deporte = n.id_deporte;
                             $("#content_sidebar").empty("");
@@ -206,7 +209,9 @@ $(document).ready(function () {
                                     var pistaSelect = 1;
 
                                     var id = datosSplit[0] + datosSplit[1] + pistaSelect + horaSelect + fechaSelect;
-                                    reserva = {id: id, id_centro: datosSplit[0], id_deporte: datosSplit[1], precio_hora: datosSplit[2], imagen: datosSplit[3], direccion: datosSplit[4], municipio: datosSplit[5], pista: pistaSelect, hora: horaSelect, fecha: fechaSelect};
+                                    reserva = {id: id, id_centro: datosSplit[0], id_deporte: datosSplit[1], precio_hora: datosSplit[2],
+                                        imagen: datosSplit[3], direccion: datosSplit[4], municipio: datosSplit[5], pista: pistaSelect,
+                                        hora: horaSelect, fecha: fechaSelect,deporte:datosSplit[6],color:datosSplit[7]};
 
                                     if (localStorage.getItem("carro") === null) {
                                         var reservas = [];
