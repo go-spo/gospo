@@ -22,8 +22,8 @@
         <!-- Custom styles for this template -->
         <link href="styles/css/half-slider.css" rel="stylesheet" type="text/css"/>
         <link href="styles/css/sports_selection.css" rel="stylesheet" type="text/css"/>
-         <!-- Carro compra-->
-         <link href="styles/css/carro.css" rel="stylesheet" type="text/css"/>
+        <!-- Carro compra-->
+        <link href="styles/css/carro.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>
@@ -68,7 +68,7 @@
                             <a class="nav-link btn btn-primary nav-login" href="#">Log In</a>
                         </li>
                     </ul>
-                     <button type="button" class=" nav-item__carro" data-toggle="modal" data-target="#Modal__carrito">
+                    <button type="button" class=" nav-item__carro" data-toggle="modal" data-target="#Modal__carrito">
                         <i class="fab fa-opencart fa-lg"></i><span class="nav-item__carro__contador"></span>
                     </button>
                 </div>
@@ -144,7 +144,7 @@
         <!-- Flickity HTML init -->
 
 
-         <!-- Modal -->
+        <!-- Modal -->
         <div class="modal fade right" id="Modal__carrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog  modal-lg modal-right" role="document">
                 <div class="modal-content">
@@ -156,7 +156,7 @@
                     </div>
                     <hr>
                     <div class="modal-body" id="carrito__contenido">
-                        
+
                     </div>
                     <hr>
                     <div class="modal-footer">
@@ -167,7 +167,7 @@
                 </div>
             </div>
         </div>
-          <!-- Modal Realizar Pedido Reservas-->
+        <!-- Modal Realizar Pedido Reservas-->
         <div class="modal fade" id="Comprar-Reservas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-side modal-bottom-right" role="document">
                 <div class="modal-content">
@@ -187,7 +187,27 @@
                 </div>
             </div>
         </div>
+        <!-- Modal Compra realizada con exito-->
+        <div class="modal fade" id="ReservaRealizada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Reservas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Compra realizada con exito</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+       
         <!--Footer-->
         <footer class="page-footer center-on-small-only elegant-color lighten-3 wow fadeInUp">
 

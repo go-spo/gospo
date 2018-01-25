@@ -166,9 +166,9 @@ if (isset($_GET["deporte"])) {
                 </div>
             </div>
         </div>
-        <!-- Modal Añadir Reserva-->
-        <div class="modal fade" id="addReserva" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-side modal-top-left" role="document">
+        <!-- Modal Compra realizada con exito-->
+        <div class="modal fade" id="ReservaRealizada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog " role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLabel">Reservas</h4>
@@ -177,11 +177,11 @@ if (isset($_GET["deporte"])) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h6>¿Quieres añadir esta reserva a la lista?</h6>
+                        <h6>Compra realizada con exito</h6>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary boton--add">Añadir</button>
+                       
                     </div>
                 </div>
             </div>
@@ -206,6 +206,7 @@ if (isset($_GET["deporte"])) {
                 </div>
             </div>
         </div>
+    
         <script>
                     $('.left_inner').resizable();
                     $(function () {

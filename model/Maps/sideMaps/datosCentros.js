@@ -205,7 +205,34 @@ $(document).ready(function () {
                                     var id = datosSplit[0] + datosSplit[1] + pistaSelect + horaSelect + fechaSelect;
                                     reserva = {id: id, id_centro: datosSplit[0], id_deporte: datosSplit[1], precio_hora: datosSplit[2], imagen: datosSplit[3], direccion: datosSplit[4], municipio: datosSplit[5], pista: pistaSelect, hora: horaSelect, fecha: fechaSelect};
 
-                                    $("#addReserva").modal("show");
+                                    if (localStorage.getItem("carro") === null) {
+                                        var reservas = [];
+                                        reservas.push(reserva);
+                                        localStorage.setItem("carro", JSON.stringify(reservas));
+                                        articulos();
+                                        console.log("hola");
+
+                                    } else {
+                                        var add = true;
+                                        jcarro = localStorage.getItem("carro");
+                                        var carro = JSON.parse(jcarro);
+                                        for (var i = 0; i < carro.length; i++) {
+                                            if (carro[i].id === reserva.id) {
+                                                add = false;
+                                            }
+                                        }
+                                        if (add) {
+                                            carro.push(reserva);
+                                            localStorage.setItem("carro", JSON.stringify(carro));
+                                            articulos();
+                                            console.log("ass");
+
+                                        } else {
+
+                                            $("#reservaRepetida").modal("show");
+
+                                        }
+                                    }
 
                                 });
 
@@ -270,36 +297,7 @@ $(document).ready(function () {
             });
         }
     });
-    $(".boton--add").on("click", function () {
-        if (localStorage.getItem("carro") === null) {
-            var reservas = [];
-            reservas.push(reserva);
-            localStorage.setItem("carro", JSON.stringify(reservas));
-            articulos();
-            console.log("hola");
-             $("#addReserva").modal("hide");
-        } else {
-            var add = true;
-            jcarro = localStorage.getItem("carro");
-            var carro = JSON.parse(jcarro);
-            for (var i = 0; i < carro.length; i++) {
-                if (carro[i].id === reserva.id) {
-                    add = false;
-                }
-            }
-            if (add) {
-                carro.push(reserva);
-                localStorage.setItem("carro", JSON.stringify(carro));
-                articulos();
-                console.log("ass");
-                 $("#addReserva").modal("hide");
-            } else {
-                 $("#addReserva").modal("hide");
-                $("#reservaRepetida").modal("show");
-
-            }
-        }
-    });
+  
 });
 
 

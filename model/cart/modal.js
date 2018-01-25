@@ -80,7 +80,7 @@ $(document).ready(function () {
             });
             $("#boton__reservar").on("click", function () {
                 $("#Comprar-Reservas").modal("show");
-                
+
 
             });
         });
@@ -92,10 +92,16 @@ $(document).ready(function () {
         $.ajax({
             url: '/gospo/model/cart/reservas.php',
             type: 'POST',
-            dataType: 'json',
-            data: {carro: envio},           
+            data: {carro: envio},
             success: function (reservado) {
-                alert("si va");
+
+                $("#Modal__carrito").modal("hide");
+                $("#Comprar-Reservas").modal("hide");
+       //llama a modal de compra con exito         
+                $("#ReservaRealizada").modal("show");
+                $("#carrito__contenido").html("");
+                localStorage.removeItem("carro");
+                $(".nav-item__carro__contador").text("");
             }
 
 
