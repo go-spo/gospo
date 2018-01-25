@@ -118,8 +118,8 @@ $(document).ready(function () {
                     success: function (seleccionado) {
 
                         seleccionado.forEach(n => {
-                            
-                             var datosJson = n.id_centro + ":" + n.id_deporte + ":" + n.precio_hora + ":" + n.url_img + ":" + n.direccion + ":" + n.municipio;
+
+                            var datosJson = n.id_centro + ":" + n.id_deporte + ":" + n.precio_hora + ":" + n.url_img + ":" + n.direccion + ":" + n.municipio;
                             id_centro = n.id_centro;
                             id_deporte = n.id_deporte;
                             $("#content_sidebar").empty("");
@@ -189,7 +189,7 @@ $(document).ready(function () {
                                     '</div>' +
                                     '</div>' +
                                     '</div>');
-                             // ------------- BOTON RESERVAR --------------- // 
+                            // ------------- BOTON RESERVAR --------------- // 
                             $("#reservas").ready(function () {
                                 $("#btn-reserva").on("click", function () {
                                     datos = $(this).attr("data");
@@ -201,24 +201,11 @@ $(document).ready(function () {
                                     //     var fechaSelect = ($("#input_datepicker").val());
                                     var fechaSelect = fechaElegida;
                                     var pistaSelect = 1;
-                                    
+
                                     var id = datosSplit[0] + datosSplit[1] + pistaSelect + horaSelect + fechaSelect;
                                     reserva = {id: id, id_centro: datosSplit[0], id_deporte: datosSplit[1], precio_hora: datosSplit[2], imagen: datosSplit[3], direccion: datosSplit[4], municipio: datosSplit[5], pista: pistaSelect, hora: horaSelect, fecha: fechaSelect};
-                                    if (localStorage.getItem("carro") === null) {
-                                        var reservas = [];
-                                        reservas.push(reserva);
-                                        localStorage.setItem("carro", JSON.stringify(reservas));
-                                        articulos();
-                                        console.log("hola");
-                                    } else {
-                                        jcarro = localStorage.getItem("carro");
-                                        var carro = JSON.parse(jcarro);
-                                        carro.push(reserva);
-                                        localStorage.setItem("carro", JSON.stringify(carro));
-                                        articulos();
-                                        console.log("ass");
-                                    }
 
+                                    $("#addReserva").modal("show");
 
                                 });
 
@@ -226,7 +213,7 @@ $(document).ready(function () {
                             ////////////////////////
                         });
 
-                      $('.datepicker').pickadate({
+                        $('.datepicker').pickadate({
                             monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                             monthsShort: ['En', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
                             weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
@@ -283,7 +270,36 @@ $(document).ready(function () {
             });
         }
     });
+    $(".boton--add").on("click", function () {
+        if (localStorage.getItem("carro") === null) {
+            var reservas = [];
+            reservas.push(reserva);
+            localStorage.setItem("carro", JSON.stringify(reservas));
+            articulos();
+            console.log("hola");
+             $("#addReserva").modal("hide");
+        } else {
+            var add = true;
+            jcarro = localStorage.getItem("carro");
+            var carro = JSON.parse(jcarro);
+            for (var i = 0; i < carro.length; i++) {
+                if (carro[i].id === reserva.id) {
+                    add = false;
+                }
+            }
+            if (add) {
+                carro.push(reserva);
+                localStorage.setItem("carro", JSON.stringify(carro));
+                articulos();
+                console.log("ass");
+                 $("#addReserva").modal("hide");
+            } else {
+                 $("#addReserva").modal("hide");
+                $("#reservaRepetida").modal("show");
 
+            }
+        }
+    });
 });
 
 

@@ -38,7 +38,7 @@ if (isset($_GET["deporte"])) {
         <link href="../vendor/mdb/css/mdb.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="../styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
-         <!-- Carro compra-->
+        <!-- Carro compra-->
         <link href="../styles/css/carro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -65,7 +65,7 @@ if (isset($_GET["deporte"])) {
 
         </script>
         <script src="../model/Maps/sideMaps/datosCentros.js" type="text/javascript"></script>
-         <!-- Carro compra-->
+        <!-- Carro compra-->
         <script src="../model/cart/modal.js" type="text/javascript"></script>
         <!-- Effects-->
         <script src="../vendor/jquery/effects/slider.js" type="text/javascript"></script>
@@ -123,7 +123,7 @@ if (isset($_GET["deporte"])) {
                 <div id="map"></div>
             </div>
         </div>
-         <!-- Modal -->
+        <!-- Modal Carro-->
         <div class="modal fade right" id="Modal__carrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog  modal-lg modal-right" role="document">
                 <div class="modal-content">
@@ -146,6 +146,66 @@ if (isset($_GET["deporte"])) {
                 </div>
             </div>
         </div> 
+        <!-- Modal  repetido-->
+        <div class="modal fade" id="reservaRepetida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-side modal-top-left" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Reservas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6> Esta pista ya esta añadida a tu lista</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Añadir Reserva-->
+        <div class="modal fade" id="addReserva" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-side modal-top-left" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Reservas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>¿Quieres añadir esta reserva a la lista?</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary boton--add">Añadir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Realizar Pedido Reservas-->
+        <div class="modal fade" id="Comprar-Reservas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-side modal-bottom-right" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Reservas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>¿Realizar la reserva y pago?</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary boton--pagar-reservar">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script>
                     $('.left_inner').resizable();
                     $(function () {
