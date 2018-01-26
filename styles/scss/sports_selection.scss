@@ -1,0 +1,142 @@
+@import "_variables.scss";
+
+$radio-suave: 3px;
+
+@mixin border-radius($radio-suave){
+    -webkit-border-radius: $radio-suave;
+    -moz-border-radius: $radio-suave;
+    -ms-border-radius: $radio-suave;
+    border-radius: $radio-suave;
+}
+
+
+html{
+    box-sizing: border-box;
+}
+
+*,*:after,*:before{
+    box-sizing: inherit;
+}
+
+.deportes-seleccion{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.cabecera-selecciones{
+    margin-left: 10px;
+}
+
+.deportes-seleccion-listado{
+    list-style-type: none;
+}
+
+.card-img-top{
+    min-height: 30vh;
+    object-fit: cover;
+}
+
+@media  (max-width: $phone-media-max-size) {
+
+    .card-img-top{
+        max-height: 28vh;
+        object-fit: cover;
+    }
+
+}
+
+@media  (max-width: $phablet-media-max-size) {
+    .carousel-cell{
+        min-width: 33vw;
+        object-fit: cover;
+    }
+}
+
+.container-fluid{
+    max-width: 1920px;
+}
+
+.no-pad{
+    padding:0;
+    margin:0;
+}
+
+.hover-card .top {
+    transition: 1s;
+    bottom: 0;
+    background: rgba(66, 66, 66, 0.56);
+    padding: 0.5em;
+    position: absolute;
+    left: 0;
+    text-align: left;
+    color: white;
+    width: 100%;
+    max-height: 100%;
+}
+
+.card:hover .top{
+    opacity: 1;
+    background: tomato;
+}
+.card:hover .read-more .fa{
+    color:white;
+}
+.hover-card h2,.hover-card,.hover-card h4 {
+    margin: 0;
+}
+
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+    background: #EEE;
+}
+
+.carousel-cell {
+    width:30%;
+    height: 30vh;
+    margin-right: 10px; 
+    background: transparent;
+    border-radius: 5px;
+    counter-increment: gallery-cell;
+    margin: 8px;
+}
+
+
+.flickity-viewport{
+    background-image: url("../../resources/img/logo-3.PNG");
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: white;
+}
+
+@media(max-width: $phone-media-max-size) {
+    .carousel-cell {
+        width:90%;
+    }
+}

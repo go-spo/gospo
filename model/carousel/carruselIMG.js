@@ -13,7 +13,7 @@ $(document).ready(function () {
                     div1 = "<div class='carousel-item ' style='background-image:url(" + n.url + ")'>" +
                             "  <div class='carousel-caption d-none d-md-block'> <h3>" + n.titulo + "</h3><p>" + n.descripcion + "</p></div></div>";
                 }
-                $(".carousel-inner").append(div1);
+                $(".main-img-caoursel").append(div1);
                 i++;
             });
         }

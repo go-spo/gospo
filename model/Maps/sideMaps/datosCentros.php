@@ -8,7 +8,7 @@ if ($conection) {
     $ciudad = $_SESSION["ciudad"];
     $centros = [];
 
-    $queryCentros = $conection->query("select  round((sum(p.puntuacion_total)/sum(p.votos))/2,2) as media,
+    $queryCentros = $conection->query("select  round((sum(p.puntuacion_total)/sum(p.votos)),2) as media,
         sum(p.votos)as votos, c.*, p.hora_apertura,p.hora_cierre
         from centros c inner join pistas_deporte_centro p inner join deportes d
         on c.id_centro= p.id_centro and d.id_deporte = p.id_deporte
