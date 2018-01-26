@@ -3,13 +3,7 @@
 
 $(document).ready(function () {
     articulos();
-//    $('.boton--pagar-reservar').on("click", function () {
-//        $('#alertaCompra').show("fade");
-//
-//        setTimeOut(function () {
-//            $('#alertaCompra').hide("fade");
-//        }, 3000);
-//    });
+
 
 
     $(".nav-item__carro").on("click", function () {
@@ -21,7 +15,7 @@ $(document).ready(function () {
 
         var jcarro = localStorage.getItem("carro");
         var carro = JSON.parse(jcarro);
-        if (carro === null) {
+        if ((carro === null) || (carro.length <1)){
             $("#carrito__contenido").html("");
             var carroEmpty = "<h5>No tienes ningún articulo en el carro</h5>";
             $("#carrito__contenido").append(carroEmpty);
@@ -89,7 +83,10 @@ $(document).ready(function () {
                         items.splice(i, 1);
                     }
                 }
-
+                if (items.length<1){
+                    $(".carrito__footer--precio-total").html("");
+                    $("#Modal__carrito").modal("hide");
+                }
                 localStorage.setItem("carro", JSON.stringify(items));
                 //borra elemento del html
                 var reservaBorrar = document.getElementById(id_padre);
@@ -97,9 +94,9 @@ $(document).ready(function () {
                 setTimeout(function () {
                     reservaBorrar.parentNode.removeChild(reservaBorrar);
                 }, 300);
-
                 precioTotal();
                 articulos();
+                
             });
             $("#boton__vaciar").on("click", function () {
                 $("#carrito__contenido").html("");
@@ -133,7 +130,7 @@ $(document).ready(function () {
                 $("#Modal__carrito").modal("hide");
                 $("#Comprar-Reservas").modal("hide");
                 //llama a modal de compra con exito         
-                //    $("#ReservaRealizada").modal("show");
+                $("#ReservaRealizada").modal("show");
                 $("#carrito__contenido").html("");
                 localStorage.removeItem("carro");
                 $(".nav-item__carro__contador").text("");
