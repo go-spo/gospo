@@ -25,7 +25,8 @@ $(document).ready(function () {
             carro.forEach(n => {
 
                 var url = "";
-                if (document.referrer === "http://172.16.205.8/gospo/index.html") {
+                if ((document.referrer === "http://172.16.205.8/gospo/index.html")|| (document.referrer === "172.16.205.8/gospo/index.html") || 
+                        (document.referrer === "http://localhost/gospo/index.html")){
                     url = n.imagen;
                 } else {
                     url = n.imagen.substring(3);
