@@ -94,7 +94,6 @@ class GospoDB {
         $pistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $pistas;
-        
     }
 
     public function insertPista($id_deporte, $id_centro, $numero_pista, $precio_hora, $hora_apertura, $hora_cierre) {
@@ -120,25 +119,48 @@ class GospoDB {
         $stmt->close();
         return $r;
     }
-    public function insertDeporte($nombre,$descripcion,$tags,$icono_full,$icono_empty,$imagen,$color) {
+
+    public function insertDeporte($nombre, $descripcion, $tags, $icono_full, $icono_empty, $imagen, $color) {
         $stmt = $this->mysqli->prepare("INSERT INTO deportes VALUES (null,?,?,?,?,?,?,?); ");   //inserta en la tabla deportes uno nuevo
-        $stmt->bind_param('sssssss', $nombre,$descripcion,$tags,$icono_full,$icono_empty, $imagen, $color);
+        $stmt->bind_param('sssssss', $nombre, $descripcion, $tags, $icono_full, $icono_empty, $imagen, $color);
         $r = $stmt->execute();
         $stmt->close();
         return $r;
     }
- public function updateDeporte($id_deporte, $descripcion, $tags, $icono_full, $icono_empty, $imagen, $color) {            // cambia datos de una pista
+
+    public function updateDeporte($id_deporte, $descripcion, $tags, $icono_full, $icono_empty, $imagen, $color) {            // cambia datos de una pista
         $stmt = $this->mysqli->prepare("UPDATE deportes SET descripcion=?,tags=?,icono_full=?,icono_empty=?,imagen=?,color=? WHERE id_deporte=?; ");
         $stmt->bind_param('sssssss', $descripcion, $tags, $icono_full, $icono_empty, $imagen, $color, $id_deporte);
         $r = $stmt->execute();
         $stmt->close();
         return $r;
     }
+
     public function getAllDeportes() {                  // busca todas las pistas de la tabla pistas_deporte_centro
         $result = $this->mysqli->query('select * from deportes;');
         $pistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $pistas;
-        
     }
+
+    public function getTotalDeportes() {
+        $result = $this->mysqli->query('select count(*) from deportes;');
+        $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
+        $result->close();
+        return $totalPistas;
+    }
+     public function getTotalCentros() {
+        $result = $this->mysqli->query('select count(*) from centros;');
+        $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
+        $result->close();
+        return $totalPistas;
+    }
+       public function getTotalUsuarios() {
+        $result = $this->mysqli->query('select count(*) from usuarios;');
+        $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
+        $result->close();
+        return $totalPistas;
+    }
+
+
 }

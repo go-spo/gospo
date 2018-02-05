@@ -46,7 +46,7 @@ class GospoAPI {
     }
 
     function response($code = 200, $status = "", $message = "") {
-        
+
         http_response_code($code);
         if (!empty($status) && !empty($message)) {
             $response = array("status" => $status, "message" => $message);
@@ -94,7 +94,7 @@ class GospoAPI {
     }
 
     function deletePista() {
-        
+
         $obj = json_decode(file_get_contents('php://input'));
         $objArr = (array) $obj;
         if (empty($objArr)) {
@@ -160,6 +160,23 @@ class GospoAPI {
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
+    function getTotalDeportes() {
+        $db = new GospoDB();
+        $response = $db->getTotalDeportes();
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    function getTotalCentros() {
+        $db = new GospoDB();
+        $response = $db->getTotalCentros();
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+       function getTotalUsuarios() {
+        $db = new GospoDB();
+        $response = $db->getTotalUsuarios();
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
     public function API() {
         header('Content-Type: application/JSON');
         $method = $_SERVER['REQUEST_METHOD'];
@@ -171,6 +188,12 @@ class GospoAPI {
                     $this->getPistas();
                 } else if ($_GET['action'] == 'deportes') {
                     $this->getDeportes();
+                } else if ($_GET['action'] == 'totaldeportes') {
+                    $this->getTotalDeportes();
+                } else if ($_GET['action'] == 'totalcentros') {
+                    $this->getTotalCentros();
+                     } else if ($_GET['action'] == 'totalusuarios') {
+                    $this->getTotalUsuarios();
                 } else {
                     $this->response(400);
                 }
