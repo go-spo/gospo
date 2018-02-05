@@ -171,9 +171,16 @@ class GospoAPI {
         $response = $db->getTotalCentros();
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
-       function getTotalUsuarios() {
+
+    function getTotalUsuarios() {
         $db = new GospoDB();
         $response = $db->getTotalUsuarios();
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    function getTotalEventos() {
+        $db = new GospoDB();
+        $response = $db->getTotalEventos();
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
@@ -192,8 +199,10 @@ class GospoAPI {
                     $this->getTotalDeportes();
                 } else if ($_GET['action'] == 'totalcentros') {
                     $this->getTotalCentros();
-                     } else if ($_GET['action'] == 'totalusuarios') {
+                } else if ($_GET['action'] == 'totalusuarios') {
                     $this->getTotalUsuarios();
+                } else if ($_GET['action'] == 'totaleventos') {
+                    $this->getTotalEventos();
                 } else {
                     $this->response(400);
                 }

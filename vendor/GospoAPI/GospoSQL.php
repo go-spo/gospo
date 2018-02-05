@@ -161,6 +161,13 @@ class GospoDB {
         $result->close();
         return $totalPistas;
     }
+       public function getTotalEventos() {
+        $result = $this->mysqli->query('select count(*) from eventos;');
+        $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
+        $result->close();
+        return $totalPistas;
+    }
+
 
 
 }
