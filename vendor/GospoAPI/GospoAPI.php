@@ -184,6 +184,54 @@ class GospoAPI {
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
+    function getUsuarios() {
+        $db = new GospoDB();
+        $response = $db->getUsuarios();
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    function saveUsuario() {
+
+        $obj = json_decode(file_get_contents('php://input'));
+        $objArr = (array) $obj;
+        if (empty($objArr)) {
+            $this->response(422, "error", "Nothing to add. Check json");
+        } else if (isset($obj->email)) {
+            $deporte = new GospoDB();
+            $deporte->insertUsuario($obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $obj->password, $obj->email);
+            $this->response(200, "success", "Usuario added");
+        } else {
+            $this->response(422, "error", "The property is not defined");
+        }
+    }
+
+    function deleteUsuario() {
+        if (isset($_GET['id'])) {
+
+            $db = new GospoDB();
+            $db->deleteUsuario($_GET['id']);
+            $this->response(204);
+        }
+    }
+    function updateUsuario(){
+        $obj = json_decode(file_get_contents('php://input'));
+        $objArr = (array) $obj;
+        if (empty($objArr)) {
+            $this->response(422, "error", "Nothing to add. Check json");
+        } else if (isset($obj->id_usuario)) {
+            $db = new GospoDB();
+            $db->updateUsuario($obj->id_usuario,$obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $obj->password, $obj->email,$obj->tipo_usuario,$obj->id_centro_administrado);
+            $this->response(200, "success", "Usuario updated");
+        } else {
+            $this->response(422, "error", "The property is not defined");
+        }
+    }
+    function getReservasDeporte(){
+        $db = new GospoDB();
+        $response = $db->getReservasDeporte();
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
     public function API() {
         header('Content-Type: application/JSON');
         $method = $_SERVER['REQUEST_METHOD'];
@@ -195,6 +243,8 @@ class GospoAPI {
                     $this->getPistas();
                 } else if ($_GET['action'] == 'deportes') {
                     $this->getDeportes();
+                } else if ($_GET['action'] == 'usuarios') {
+                    $this->getUsuarios();
                 } else if ($_GET['action'] == 'totaldeportes') {
                     $this->getTotalDeportes();
                 } else if ($_GET['action'] == 'totalcentros') {
@@ -203,6 +253,8 @@ class GospoAPI {
                     $this->getTotalUsuarios();
                 } else if ($_GET['action'] == 'totaleventos') {
                     $this->getTotalEventos();
+                    } else if ($_GET['action'] == 'char') {
+                    $this->getReservasDeporte();
                 } else {
                     $this->response(400);
                 }
@@ -214,6 +266,8 @@ class GospoAPI {
                     $this->savePista();
                 } else if ($_GET['action'] == 'deportes') {
                     $this->saveDeporte();
+                } else if ($_GET['action'] == 'usuarios') {
+                    $this->saveUsuario();
                 } else {
                     $this->response(400);
                 }
@@ -225,6 +279,8 @@ class GospoAPI {
                     $this->updatePista();
                 } else if ($_GET['action'] == 'deportes') {
                     $this->updateDeporte();
+                    } else if ($_GET['action'] == 'usuarios') {
+                    $this->updateUsuario();
                 } else {
                     $this->response(400);
                 }
@@ -234,6 +290,8 @@ class GospoAPI {
                     $this->deleteCentro();
                 } else if ($_GET['action'] == 'pistas') {
                     $this->deletePista();
+                } else if ($_GET['action'] == 'usuarios') {
+                    $this->deleteUsuario();
                 } else {
                     $this->response(400);
                 }
