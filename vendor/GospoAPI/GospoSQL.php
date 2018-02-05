@@ -206,7 +206,7 @@ class GospoDB {
                   FROM reservas r group by r.id_deporte;");
         $resDeportes = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
-        return $resDeportes;
+        return $resDeportes ;
     }
 
 }
