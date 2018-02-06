@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    $("#alert-target").click(function () {
-    toastr["info"]("I was launched via jQuery!")
-});
+   
     $.ajax({
         url: '../model/Maps/sideMaps/datosCentros.php',
         dataType: 'json',
@@ -53,14 +51,14 @@ $(document).ready(function () {
 
             resultados = "";
             centros.forEach(n => {
-                resultados = resultados + '<div id="' + n.id_centro + '" class="item-card panel panel-default panel-horizontal">' +
+                resultados = resultados + '<div id="' + n.id_centro + '" class="item-card panel panel-default panel-horizontal" draggable="true" ondragstart="drag(event)">' +
                         '<div class="panel-body">' +
                         '<h5>' + n.nombre + '</h5>' +
                         '<h7>Dirección: ' + n.direccion + '</h7>' +
                         '<p> Tlf: ' + n.telefono + '</p>' +
                         '<p class="rate-stars">' + (n.media).substring(0, 3) + '<span>' + rate(n.media) + '</span>(' + n.votos + ')</p>' +
                         '</div>' +
-                        '<div class="panel-footer"><img src="' + n.url_img + '"></div>' +
+                        '<div class="panel-footer"><img src="' + n.url_img + '" draggable="false"></div>' +
                         ' </div>';
 
             });

@@ -1,0 +1,15 @@
+.icon-link{
+    color:gray;
+    cursor: pointer;
+}
+
+.modal-header{
+    background: linear-gradient(to right, #e54b4b, #4dcef2);
+    color: white;
+    padding:12px 15px 8px 15px !important;
+}
+
+.close{
+    color: white !important;
+    font-size: 28px;
+}

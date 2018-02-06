@@ -144,28 +144,28 @@ class GospoDB {
     }
 
     public function getTotalDeportes() {
-        $result = $this->mysqli->query('select count(*) as totalDeportes from deportes;');
+        $result = $this->mysqli->query('select count(*) as "totalDeportes" from deportes;');
         $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $totalPistas;
     }
 
     public function getTotalCentros() {
-        $result = $this->mysqli->query('select count(*) as totalCentros from centros;');
+        $result = $this->mysqli->query('select count(*) as "totalCentros" from centros;');
         $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $totalPistas;
     }
 
     public function getTotalUsuarios() {
-        $result = $this->mysqli->query('select count(*) as totalUsuarios from usuarios;');
+        $result = $this->mysqli->query('select count(*) as "totalUsuarios" from usuarios;');
         $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $totalPistas;
     }
 
     public function getTotalEventos() {
-        $result = $this->mysqli->query('select count(*) as totalEventos from eventos;');
+        $result = $this->mysqli->query('select count(*) as "totalEventos" from eventos;');
         $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $totalPistas;

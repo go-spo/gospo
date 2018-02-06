@@ -275,7 +275,7 @@ class GospoAPI {
                     $this->getTotalUsuarios();
                 } else if ($_GET['action'] == 'totaleventos') {
                     $this->getTotalEventos();
-                } else if ($_GET['action'] == 'char') {
+                } else if ($_GET['action'] == 'chart') {
                     $this->getReservasDeporte();
                 } else if ($_GET['action'] == 'gerentes') {
                     $this->getGerentes();

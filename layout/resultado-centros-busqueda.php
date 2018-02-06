@@ -58,6 +58,8 @@ if (isset($_GET["deporte"])) {
         <script src="../vendor/jquery/components/data_picker/data_picker.js" type="text/javascript"></script>
         <!-- Font Awesome -->
         <script src="../vendor/fontawesome-all.js" type="text/javascript"></script>
+        <!-- Drag and drop -->
+        <script src="../model/drag-drop/drag-drop.js" type="text/javascript"></script>
         <!-- Google Maps -->
         <?php include '../model/Maps/initMap-prueba.php'; ?>
         <script async defer
@@ -119,7 +121,7 @@ if (isset($_GET["deporte"])) {
                 </div>
             </div>
             <div class="map-container">
-                <div id="map"></div>
+                <div id="map" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
         </div>
         <!-- Modal Carro-->
