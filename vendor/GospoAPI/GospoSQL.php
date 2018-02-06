@@ -144,28 +144,28 @@ class GospoDB {
     }
 
     public function getTotalDeportes() {
-        $result = $this->mysqli->query('select count(*) from deportes;');
+        $result = $this->mysqli->query('select count(*) as totalDeportes from deportes;');
         $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $totalPistas;
     }
 
     public function getTotalCentros() {
-        $result = $this->mysqli->query('select count(*) from centros;');
+        $result = $this->mysqli->query('select count(*) as totalCentros from centros;');
         $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $totalPistas;
     }
 
     public function getTotalUsuarios() {
-        $result = $this->mysqli->query('select count(*) from usuarios;');
+        $result = $this->mysqli->query('select count(*) as totalUsuarios from usuarios;');
         $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $totalPistas;
     }
 
     public function getTotalEventos() {
-        $result = $this->mysqli->query('select count(*) from eventos;');
+        $result = $this->mysqli->query('select count(*) as totalEventos from eventos;');
         $totalPistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $totalPistas;
@@ -193,20 +193,37 @@ class GospoDB {
         $stmt->close();
         return $r;
     }
-    public function updateUsuario($id_usuario,$dni, $nombre, $apellido1, $apellido2, $nick, $password, $email,$tipo_usuario,$id_centro_administrado){
+
+    public function updateUsuario($id_usuario, $dni, $nombre, $apellido1, $apellido2, $nick, $password, $email, $tipo_usuario, $id_centro_administrado) {
         $stmt = $this->mysqli->prepare("UPDATE usuarios SET dni=?,nombre=?,apellido1=?,apellido2=?,nick=?,password=?,email=?,tipo_usuario=?,id_centro_administrado=? WHERE id_usuario=?; ");
-        $stmt->bind_param('sssssssssi',$dni, $nombre, $apellido1, $apellido2, $nick, $password, $email,$tipo_usuario,$id_centro_administrado, $id_usuario);
+        $stmt->bind_param('sssssssssi', $dni, $nombre, $apellido1, $apellido2, $nick, $password, $email, $tipo_usuario, $id_centro_administrado, $id_usuario);
         $r = $stmt->execute();
         $stmt->close();
         return $r;
     }
-    public function getReservasDeporte(){
+
+    public function getReservasDeporte() {
         $result = $this->mysqli->query("SELECT (select nombre from deportes d where d.id_deporte=r.id_deporte) 
-            as 'deporte',count(r.id_deporte) as 'cantidad-reservas'
+            as 'deporte',count(r.id_deporte) as 'cantidad_reservas'
                   FROM reservas r group by r.id_deporte;");
         $resDeportes = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
-        return $resDeportes ;
+        return $resDeportes;
+    }
+
+    public function setUltimaVisita($id_usuario) {
+        $stmt = $this->mysqli->prepare("UPDATE usuarios SET ultima_visita=current_date() WHERE id_usuario=?; ");
+        $stmt->bind_param('i', $id_usuario);
+        $r = $stmt->execute();
+        $stmt->close();
+        return $r;
+    }
+
+    public function getGerentes() {
+        $result = $this->mysqli->query("SELECT * FROM usuarios where tipo_usuario = 'gerente'");
+        $users = $result->fetch_all(MYSQLI_ASSOC);
+        $result->close();
+        return $users;
     }
 
 }
