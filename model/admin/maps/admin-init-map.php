@@ -1,3 +1,4 @@
+
 <?php ?>
 
 <script>
@@ -10,8 +11,7 @@
         });
         var map = new google.maps.Map(document.getElementById("map"), map);
         $.ajax({
-
-            url: '../../model/Maps/admin-init-map.php',
+            url: '../../../model/Maps/admin-init-map.php',
             dataType: 'json',
             success: function (markers) {
 
@@ -26,7 +26,7 @@
                     markadoresCluster.push(marker);
 
                 });
-                 markerCluster = new MarkerClusterer(map, markadoresCluster,
+                markerCluster = new MarkerClusterer(map, markadoresCluster,
                         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
             }
         });
@@ -35,3 +35,4 @@
 
 
 </script>
+

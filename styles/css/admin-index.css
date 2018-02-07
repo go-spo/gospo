@@ -1,3 +1,4 @@
+
 .icon-link{
     color:gray;
     cursor: pointer;
@@ -12,4 +13,56 @@
 .close{
     color: white !important;
     font-size: 28px;
+}
+
+#input-search{
+    width: 80%;
+    background-color: transparent;
+    padding: 2px;
+    padding-left: 8px;
+    font-size:16px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color:white; 
+    border:0px;
+    border-bottom: 1px solid white;
+}
+
+#input-search:active{
+    border-color:red;
+}
+
+#input-search::placeholder {
+    color:white;  
+}
+
+/*----------------- images -----------------------*/
+
+
+
+
+.file_input_div {
+  margin: auto !important;
+  width: 250px !important;
+  height: 40px !important;
+}
+
+.file_input {
+  float: left !important;
+}
+
+#file_input_text_div {
+  width: 200px !important;
+  margin-top: 8px !important;
+  float: right !important;
+}
+
+.none {
+  display: none !important;
+}
+
+.icon-image-insert{
+    margin: 0px 7px 2px 3px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
 }

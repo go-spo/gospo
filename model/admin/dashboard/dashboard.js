@@ -1,8 +1,7 @@
-
 $(document).ready(function () {
     /*================= TOTAL CENTROS =====================*/
     $.ajax({
-        url: 'http://localhost/gospo/vendor/GospoAPI/totalcentros',
+        url: '../../../vendor/GospoAPI/totalcentros',
         dataType: 'json',
         type: 'GET',
         success: function (resultado) {
@@ -12,7 +11,7 @@ $(document).ready(function () {
     );
     /*================= TOTAL USUARIOS =====================*/
     $.ajax({
-        url: 'http://localhost/gospo/vendor/GospoAPI/totalusuarios',
+        url: '../../../vendor/GospoAPI/totalusuarios',
         dataType: 'json',
         type: 'GET',
         success: function (resultado) {
@@ -22,7 +21,7 @@ $(document).ready(function () {
     );
     /*================= TOTAL DEPORTES =====================*/
     $.ajax({
-        url: 'http://localhost/gospo/vendor/GospoAPI/totaldeportes',
+        url: '../../../vendor/GospoAPI/totaldeportes',
         dataType: 'json',
         type: 'GET',
         success: function (resultado) {
@@ -32,7 +31,7 @@ $(document).ready(function () {
     );
     /*================= TOTAL EVENTOS =====================*/
     $.ajax({
-        url: 'http://localhost/gospo/vendor/GospoAPI/totaleventos',
+        url: '../../../vendor/GospoAPI/totaleventos',
         dataType: 'json',
         type: 'GET',
         success: function (resultado) {
@@ -45,7 +44,7 @@ $(document).ready(function () {
     /* ===============     Reservas  Chart initialization    ================*/
 
     $.ajax({
-        url: 'http://localhost/gospo/vendor/GospoAPI/chart',
+        url: '../../../vendor/GospoAPI/chart',
         dataType: 'json',
         type: 'GET',
         success: function (resultado) {
@@ -57,10 +56,10 @@ $(document).ready(function () {
             resultado.forEach(n => {
                 reservasDeporteChart.push(n.deporte);
                 reservasCantidadChart.push(n.cantidad_reservas);
-                $("#leyeneda-reservas-chart").append("<p>"+n.deporte+"</p>");
+                $("#leyeneda-reservas-chart").append("<p>" + n.deporte + "</p>");
 
             });
-            
+
 
             maxChartData = Math.max.apply(null, reservasCantidadChart) + 5;
 
@@ -103,29 +102,28 @@ $(document).ready(function () {
                     }]
             ];
             var resrervasChart = Chartist.Bar('#resrervasChart', dataReservasChart, optionsReservasChart, responsiveOptions);
-            
+
 //start animation for the Resrvas  Chart
             md.startAnimationForBarChart(resrervasChart);
         }
     }
     );
-    
-    
+
+
     /* ================== USERS TABLE ==========================*/
-    
+
     $.ajax({
-        url: 'http://localhost/gospo/vendor/GospoAPI/usuarios',
+        url: '../../../vendor/GospoAPI/usuarios',
         dataType: 'json',
         type: 'GET',
         success: function (resultado) {
             console.log(resultado);
-           resultado.forEach(n => {
-               $("#users-table").append("<tr><td>"+n.id_usuario+"</td><td>"+n.nombre+"</td></td>");
-           });
-            
+            resultado.forEach(n => {
+                $("#users-table").append("<tr><td>" + n.id_usuario + "</td><td>" + n.nombre + "</td></td>");
+            });
+
         }
     }
     );
-    
 
 });
