@@ -167,30 +167,37 @@
     display: block;
     text-align: center;
     width: 100%; }
+
   .select-drop {
     width: 350px; }
+
   .browser {
     position: absolute;
     width: 80%;
     top: 30vh; }
+
   .main-container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto; }
+
   /*ELIMINA EL ESPACION ENTRE EL SECTION Y EL FOOTER*/
   /*
-    .py-5 {
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
-    }
-    */ }
-
+  .py-5 {
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+  }
+  */ }
 @media (max-width: 500px) {
   .select-drop {
     width: 250px !important; }
+
   .form-browser {
     width: 100%; }
+
   #from, #to {
     font-size: 12px; } }
+
+/*# sourceMappingURL=half-slider.css.map */

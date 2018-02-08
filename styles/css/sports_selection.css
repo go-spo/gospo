@@ -28,12 +28,10 @@ html {
   .card-img-top {
     max-height: 28vh;
     object-fit: cover; } }
-
 @media (max-width: 766px) {
   .carousel-cell {
     min-width: 33vw;
     object-fit: cover; } }
-
 .container-fluid {
   max-width: 1920px; }
 
@@ -112,3 +110,5 @@ body {
 @media (max-width: 500px) {
   .carousel-cell {
     width: 90%; } }
+
+/*# sourceMappingURL=sports_selection.css.map */

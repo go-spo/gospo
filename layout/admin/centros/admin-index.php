@@ -1,4 +1,7 @@
-<?php ?>
+<?php
+session_start();
+$_SESSION["id_user"] = 18;
+?>
 
 <!doctype html>
 <html lang="en">
@@ -7,7 +10,7 @@
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="../../../resources/img/favicon.png" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Admin</title>
+        <title>Panel Administrador</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <!-- Bootstrap core CSS     -->
@@ -17,6 +20,7 @@
         <!--     Fonts and icons     -->
         <link href="../../../vendor/fontawesome/fontawesome-admin.css" rel="stylesheet" type="text/css"/>
         <link href="../../../vendor/fontawesome/materialIcon.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../vendor/fontawesome-all.js" type="text/javascript"></script>
         <!--  Custom styles  -->
         <link href="../../../styles/css/admin-index.css" rel="stylesheet" type="text/css"/>    
     </head>
@@ -24,11 +28,6 @@
     <body>
         <div class="wrapper">
             <div class="sidebar" data-color="blue" data-image="../../../resources/img/girl-warmup.JPG">
-                <!--
-            Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-    
-            Tip 2: you can also add an image using data-image tag
-                -->
                 <div class="logo">
                     <a href="#" class="simple-text">
                         <img src="../../../resources/img/logo-3.PNG" alt=""/>
@@ -55,15 +54,21 @@
                             </a>
                         </li>
                         <li>
-                            <a href="./admin-maps.php">
-                                <i class="material-icons">location_on</i>
-                                <p>Mapa</p>
+                            <a href="./admin-pistas.php">
+                                <i class="material-icons">content_paste</i>
+                                <p>Pistas</p>
                             </a>
                         </li>
                         <li>
-                            <a href="./notifications.html">
-                                <i class="material-icons text-gray">notifications</i>
-                                <p>Notificaciones</p>
+                            <a href="./admin-deportes.php">
+                                <i class="material-icons">content_paste</i>
+                                <p>Deportes</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./admin-maps.php">
+                                <i class="material-icons">location_on</i>
+                                <p>Mapa</p>
                             </a>
                         </li>
                     </ul>
@@ -79,52 +84,18 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="./user.html"> Bienvenido Daniel </a>
+                            <a class="navbar-brand" href="./admin-user.php"> Bienvenido <span id="User-welcome"></span> </a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="material-icons">dashboard</i>
-                                        <p class="hidden-lg hidden-md">Dashboard</p>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="material-icons">notifications</i>
-                                        <span class="notification">3</span>
-                                        <p class="hidden-lg hidden-md">Notificaciones</p>
-                                    </a>
-                                    <!-- AQUI SE AÑADIRIAN LAS NOTIFICACIONES QUE TUVISIE PENDIENTES -->
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">Daniel tiene que acabar el panel de admin</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Tengo que parar a cenar</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Recuerda estirar las piernas</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="./admin-user.php" class="dropdown-toggle">
-                                        <i class="material-icons">person</i>
-                                        <p class="hidden-lg hidden-md">Perfil</p>
+                                    <a href="#" id="SignOut" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">forward</i>
+                                        <p class="hidden-lg hidden-md">Sing Out</p>
                                     </a>
                                 </li>
                             </ul>
-                            <form class="navbar-form navbar-right" role="search">
-                                <div class="form-group  is-empty">
-                                    <input type="text" class="form-control" placeholder="Buscar...">
-                                    <span class="material-input"></span>
-                                </div>
-                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                    <i class="material-icons">search</i>
-                                    <div class="ripple-container"></div>
-                                </button>
-                            </form>
+                            <div class="navbar-form navbar-right" ></div>
                         </div>
                     </div>
                 </nav>
@@ -179,7 +150,7 @@
                                     <div class="card-footer">
                                         <div class="stats">
                                             <i class="material-icons">remove_red_eye</i>
-                                            <a href="#">Ver deportes</a>
+                                            <a href="./admin-deportes.php">Ver deportes</a>
                                         </div>
                                     </div>
                                 </div>
@@ -239,7 +210,7 @@
                                             <th>Nombre</th>
                                             </thead>
                                             <tbody id="users-table">
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -250,30 +221,6 @@
                 </div>
                 <footer class="footer">
                     <div class="container-fluid">
-                        <nav class="pull-left">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Company
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Portfolio
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Blog
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
                         <p class="copyright pull-right">
                             &copy;
                             <script>
@@ -285,29 +232,8 @@
                 </footer>
             </div>
         </div>
+        <?php include '../../../model/admin/modal/leyenda.php'; ?>
     </body>
-
-    <!-- ====================== MODALS ======================== -->
-    <!-- Modal Leyenda -->
-    <div class="modal fade" id="indicesChart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <b>Leyenda</b>
-                </div>
-                <div id="leyeneda-reservas-chart" class="modal-body">
-                    <p>Ordenados de izquiera a derecha.</p><hr>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!--   Core JS Files   -->
     <script src="../../../vendor/admin-page/js/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -325,4 +251,5 @@
     <script src="../../../vendor/admin-page/js/material-dashboard.js" type="text/javascript"></script>
     <!-- Dashboard data -->
     <script src="../../../model/admin/dashboard/dashboard.js" type="text/javascript"></script>
+    <?php include '../../../model/admin/dashboard/user-welcome.php'; ?>
 </html>

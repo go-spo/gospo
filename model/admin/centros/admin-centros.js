@@ -52,7 +52,9 @@ $(document).ready(function () {
     /*LIMPIAR AL CLICK*/
     $(function () {
         $('#input-search').on('keyup', function () {
-            var econtradas = [];
+
+            var encontradas = [];
+
             var input, filter, table, tr, i;
             input = document.getElementById("input-search");
             filter = input.value.toUpperCase();
@@ -63,18 +65,20 @@ $(document).ready(function () {
                 for (var j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
                     tr[i].style.display = "none";
                     if (tr[i].getElementsByTagName("td")[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        econtradas.push(tr[i]);
+
+                        encontradas.push(tr[i]);
                     }
                 }
-                for (var k = 0; k < econtradas.length; k++) {
-                    econtradas[k].style.display = "";
+                for (var k = 0; k < encontradas.length; k++) {
+                    encontradas[k].style.display = "";
+
                 }
             }
         });
     });
 
+    /* ====================== INSERTAR Y MODIFICAR FOTOS ============================*/
 
-    /* ====================== INSERTAR Y MODIIFCAR FOTOS ============================*/
 
     var fileInputTextDiv = document.getElementById('file_input_text_div');
     var fileInput = document.getElementById('file_input_file');
@@ -109,6 +113,7 @@ $(document).ready(function () {
 
 
     $("#btn-insert-centros").click(function () {
+
         var nombre = $("input[name='nombre-insert-centro']").val();
         var telefono = $("input[name='telefono-insert-centro']").val();
         var email = $("input[name='email-insert-centro']").val();
@@ -176,13 +181,9 @@ $(document).ready(function () {
 
     /* ===================== MODIFICAR CENTROS ==========================*/
 
-
-
     $("#ver-centros").on("click", "#btn-update-centros-table", function () {
 
         var datos = this.parentNode.parentNode.childNodes;
-
-
 
         $(".card-content-update").html('   <div id="centros-update-form">  ' +
                 '                       <div class="row">  ' +
@@ -246,10 +247,8 @@ $(document).ready(function () {
                 '                               </div>  ' +
                 '                           </div>  ' +
                 '                       </div>  ' +
-                '                       <button id="btn" class="btn btn-default pull-right" style="background-color: #7e57c2" data-toggle="modal" data-target="#updateConfirm">Insertar</button>  ' +
+                '                       <button id="btn" class="btn btn-default pull-right" style="background-color: #7e57c2" data-toggle="modal" data-target="#updateConfirm">Modificar</button>  ' +
                 '</div>  ');
-
-
 
         $("input[name='id-update-centro']").val(datos[0].innerText);
         $("input[name='nombre-update-centro']").val(datos[1].innerText);
@@ -289,6 +288,7 @@ $(document).ready(function () {
         $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + direccionCompleta + "&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY", function (data) {
             var coordenada_lat = data.results[0].geometry.location.lat;
             var coordenada_lng = data.results[0].geometry.location.lng;
+
             centroUpdate = {nombre: nombre,
                 telefono: telefono,
                 email: email,
@@ -305,12 +305,14 @@ $(document).ready(function () {
 
 
             $.ajax({
+
                 url: '../../../vendor/GospoAPI/centros/' + id,
                 type: 'PUT',
                 dataType: 'json',
                 data: centroUpdate,
                 success: function (updateResult) {
                     window.location.href = './admin-centros.php';
+
 
                 }, error: function (error) {
                     alert(error.responseText);
@@ -321,10 +323,12 @@ $(document).ready(function () {
         });
 
 
+
     });
 
 
-    /* ================== BRORAR CENTROS ===========================*/
+    /* ================== BORRAR CENTROS ===========================*/
+
 
 
     $("#ver-centros").on("click", "#btn-delete-centros-table", function () {
@@ -346,16 +350,16 @@ $(document).ready(function () {
                 '</table>' +
                 '<button class="btn btn-primary btn-danger pull-right" data-toggle="modal" data-target="#deleteConfirm">Eliminar</button>');
         $("#center-table-delete").html(centroSeleccionadoDelete);
+
         $('.main-panel').scrollTop(0);
     });
-
 
     $("#center-delete").click(function () {
         $.ajax({
             url: "../../../vendor/GospoAPI/centros/" + centroSeleccionadoDelete.childNodes[0].innerHTML,
             type: 'DELETE',
             success: function () {
-                alert("borrado");
+                window.location.href = './admin-centros.php';
                 $(".card-content-delete").html('<br>' +
                         '<h4>Para eliminar un centro seleccionelo en  ' +
                         '<a href="#ver-centros" data-toggle="tab" rel="tooltip">' +
@@ -364,6 +368,7 @@ $(document).ready(function () {
                         '</h4>' +
                         '<br>');
             },
+
             error: function (xhr) {
                 alert(xhr.responseText);
             }

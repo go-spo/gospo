@@ -87,7 +87,6 @@
                     </div>
                 </div>
                 <button  id='btn-insert-centros' class="btn btn-primary btn-info pull-right">Insertar</button>
-
             </div>
         </div>
     </div>

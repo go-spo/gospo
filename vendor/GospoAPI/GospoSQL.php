@@ -145,8 +145,8 @@ class GospoDB {
     }
 
     public function getAllPistas() {                  // busca todas las pistas de la tabla pistas_deporte_centro
-        $result = $this->mysqli->query('select p.*,d.nombre from pistas_deporte_centro p inner join deportes d
-        on p.id_deporte = d.id_deporte;');
+        $result = $this->mysqli->query('select p.*,d.nombre as "nombreDeporte",c.nombre as "nombreCentro" from pistas_deporte_centro p inner join deportes d inner join centros c
+        on p.id_deporte = d.id_deporte AND c.id_centro=p.id_centro;');
         $pistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $pistas;
@@ -197,7 +197,7 @@ class GospoDB {
         $pistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $pistas;
-    }
+    }  
 
     public function getTotalDeportes() {
         $result = $this->mysqli->query('select count(*) as "totalDeportes" from deportes;');

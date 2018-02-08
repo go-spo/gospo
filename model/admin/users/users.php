@@ -26,7 +26,6 @@
                         $("#User-DNI").val(n.dni);
                     });
 
-
                     $("#profile-update-form").find(".label-floating").removeClass("is-empty");
                 }
             });

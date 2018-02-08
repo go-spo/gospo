@@ -6,7 +6,7 @@
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="../../../resources/img/favicon.png" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Admin</title>
+        <title>Panel Administrador</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <!-- Bootstrap core CSS     -->
@@ -51,16 +51,22 @@
                                 <p>Centros</p>
                             </a>
                         </li>
+                        <li>
+                            <a href="./admin-pistas.php">
+                                <i class="material-icons">content_paste</i>
+                                <p>Pistas</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./admin-deportes.php">
+                                <i class="material-icons">content_paste</i>
+                                <p>Deportes</p>
+                            </a>
+                        </li>
                         <li class="active">
                             <a href="./admin-maps.php">
                                 <i class="material-icons">location_on</i>
                                 <p>Mapa</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./notifications.html">
-                                <i class="material-icons text-gray">notifications</i>
-                                <p>Notificaciones</p>
                             </a>
                         </li>
                     </ul>
@@ -76,57 +82,18 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#"> Map </a>
+                            <a class="navbar-brand" href="#"> Panel Maps </a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="material-icons">dashboard</i>
-                                        <p class="hidden-lg hidden-md">Dashboard</p>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="material-icons">notifications</i>
-                                        <span class="notification">5</span>
-                                        <p class="hidden-lg hidden-md">Notifications</p>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">Mike John responded to your email</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">You have 5 new tasks</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">You're now friend with Andrew</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Another Notification</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Another One</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="material-icons">person</i>
-                                        <p class="hidden-lg hidden-md">Profile</p>
+                                    <a href="#" id="SignOut" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">forward</i>
+                                        <p class="hidden-lg hidden-md">Sing Out</p>
                                     </a>
                                 </li>
                             </ul>
-                            <form class="navbar-form navbar-right" role="search">
-                                <div class="form-group  is-empty">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <span class="material-input"></span>
-                                </div>
-                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                    <i class="material-icons">search</i>
-                                    <div class="ripple-container"></div>
-                                </button>
-                            </form>
+                            <div class="navbar-form navbar-right" ></div>
                         </div>
                     </div>
                 </nav>
