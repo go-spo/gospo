@@ -53,10 +53,11 @@ class GospoDB {
         return $r;
     }
 
-    public function updateCentro($id, $nombre, $telefono, $email, $direccion, $municipio, $provincia, $pais, $coordenada_X, $coordenada_Y, $url_img) {            // cambia el nombre de un usuario con id X por otro nombre insertado
+    /*La imagen por el momento no*/
+    public function updateCentro($id, $nombre, $telefono, $email, $direccion, $municipio, $provincia, $pais, $coordenada_X, $coordenada_Y) {            // cambia el nombre de un usuario con id X por otro nombre insertado
         if ($this->checkIDCentro($id)) {
-            $stmt = $this->mysqli->prepare("UPDATE Centros SET nombre=?,telefono=?,email=?,direccion=?,municipio=?,provincia=?,pais=?,coordenada_x=?,coordenada_y=?,url_img =? WHERE id_centro = ? ; ");
-            $stmt->bind_param('sssssssssss', $nombre, $telefono, $email, $direccion, $municipio, $provincia, $pais, $coordenada_X, $coordenada_Y, $url_img, $id);
+            $stmt = $this->mysqli->prepare("UPDATE Centros SET nombre=?,telefono=?,email=?,direccion=?,municipio=?,provincia=?,pais=?,coordenada_x=?,coordenada_y=? WHERE id_centro = ? ; ");
+            $stmt->bind_param('ssssssssss', $nombre, $telefono, $email, $direccion, $municipio, $provincia, $pais, $coordenada_X, $coordenada_Y, $id);
             $r = $stmt->execute();
             $stmt->close();
             return $r;

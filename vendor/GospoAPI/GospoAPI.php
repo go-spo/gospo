@@ -22,7 +22,7 @@ class GospoAPI {
                 $this->response(422, "error", "Nothing to add. Check json");
             } else if (isset($obj->nombre)) {
                 $db = new GospoDB();
-                $db->updateCentro($_GET['id'], $obj->nombre, $obj->telefono, $obj->email, $obj->direccion, $obj->municipio, $obj->provincia, $obj->pais, $obj->coordenada_x, $obj->coordenada_y, $obj->url_img);
+                $db->updateCentro($_GET['id'], $obj->nombre, $obj->telefono, $obj->email, $obj->direccion, $obj->municipio, $obj->provincia, $obj->pais, $obj->coordenada_x, $obj->coordenada_y);
                 $this->response(200, "success", "Record updated");
             } else {
                 $this->response(422, "error", "The property is not defined");
