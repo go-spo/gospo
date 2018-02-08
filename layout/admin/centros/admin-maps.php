@@ -135,7 +135,7 @@
         </div>
     </body>
     <!--   Core JS Files   -->
-    
+
     <script>
     </script>
     <script src="../../../vendor/admin-page/js/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -147,9 +147,10 @@
     <script src="../../../vendor/google-maps/clusters/clusters.js" type="text/javascript"></script>
     <?php include '../../../model/admin/maps/admin-init-map.php'; ?>
     <script async defer
-           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY&callback=initMap">
     </script>
     <!-- Material Dashboard javascript methods -->
     <script src="../../../vendor/admin-page/js/material-dashboard.js" type="text/javascript"></script>
 
 </html>
+

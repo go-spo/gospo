@@ -1,11 +1,14 @@
-<?php ?>
+<?php
+session_start();
+$_SESSION["id_user"] = 18;
+?>
 
 <!doctype html>
 <html lang="en">
 
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="../../../resources/img/favicon.png" />
+        <link rel="icon" type="image/png" href="../../resources/img/favicon.png" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>Admin</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -17,6 +20,9 @@
         <!--     Fonts and icons     -->
         <link href="../../../vendor/fontawesome/fontawesome-admin.css" rel="stylesheet" type="text/css"/>
         <link href="../../../vendor/fontawesome/materialIcon.css" rel="stylesheet" type="text/css"/>
+        <!--    Custom    -->
+        <link href="../../../styles/css/admin-index.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../styles/css/admin-user.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -77,7 +83,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="./user.html"> Bienvenido Daniel </a>
+                            <a class="navbar-brand" href="./user.html"> Bienvenido <span id="User-welcome"></span> </a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -136,88 +142,71 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="card">
-                                    <div class="card-header" data-background-color="red">
+                                    <div class="card-header" data-background-color="" style="background-color: #009688">
                                         <h4 class="title">Editor</h4>
                                         <p class="category">Completa tu perfil</p>
                                     </div>
-                                    <div class="card-content">
-                                        <form>
+                                    <div class="card-content" id="profile-update-form">
                                             <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nick</label><!--class="control-label"-->
+                                                        <input id="User-nick" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-5">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Company (disabled)</label>
-                                                        <input type="text" class="form-control" disabled>
+                                                        <label class="control-label">Dirección Email </label>
+                                                        <input id="User-email" type="email" class="form-control">
+                                                        <label id="mailCheck" class="alert-message"> </label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                 <div class="col-md-3">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Username</label>
-                                                        <input type="text" class="form-control">
+                                                        <label class="control-label">DNI</label>
+                                                        <input id="User-DNI" type="text" class="form-control">
+                                                        <label id="dniCheck" class="alert-message"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nombre</label>
+                                                        <input id="User-nombre" type="text" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Email address</label>
-                                                        <input type="email" class="form-control">
+                                                        <label class="control-label">Primer apellido</label>
+                                                        <input id="User-apellido1" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Segundo apellido</label>
+                                                        <input id="User-apellido2" type="text" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Fist Name</label>
-                                                        <input type="text" class="form-control">
+                                                        <label class="control-label">Contraseña</label>
+                                                        <input id="User-pass1" type="password" class="form-control">
+                                                         <label id="passCheck" class="alert-message"></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Last Name</label>
-                                                        <input type="text" class="form-control">
+                                                        <label class="control-label">Confirmación </label>
+                                                        <input id="User-pass2" type="password" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group label-floating">
-                                                        <label class="control-label">Adress</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating">
-                                                        <label class="control-label">City</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating">
-                                                        <label class="control-label">Country</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating">
-                                                        <label class="control-label">Postal Code</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>About Me</label>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                                            <textarea class="form-control" rows="5"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                                            <button type="submit" class="btn btn-primary pull-right" id="cambiaDatos" style="background-color: #009688">Modificar</button>
                                             <div class="clearfix"></div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -229,70 +218,47 @@
                                         </a>
                                     </div>
                                     <div class="content">
-                                        <h6 class="category text-gray">CEO / Co-Founder</h6>
-                                        <h4 class="card-title">Alec Thompson</h4>
-                                        <p class="card-content">
-                                            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                                        </p>
-                                        <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                                        <h6 class="category text-gray" id="User-puesto"></h6>
+                                        <a href="#pablo" class="btn btn-primary btn-round" style="background-color: #009688">Cambiar foto</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <nav class="pull-left">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Company
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Portfolio
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Blog
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <p class="copyright pull-right">
-                            &copy;
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            <a href="#">GoSpo</a>, Time to move on
-                        </p>
-                    </div>
-                </footer>
             </div>
         </div>
+      <div class="modal fade" id="user-cambios-update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-header-update-profile">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <b>Perfil</b>
+                </div>
+                <div id="leyeneda-reservas-chart" class="modal-body">
+                    <p>¿Deseas aplicar los cambios?</p><hr>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="Cancel-user-update"class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="user-update" class="btn btn-primary" data-dismiss="modal" style="background-color: #009688">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </body>
     <!--   Core JS Files   -->
     <script src="../../../vendor/admin-page/js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="../../../vendor/admin-page/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../../../vendor/admin-page/js/material.min.js" type="text/javascript"></script>
-    <!--  Charts Plugin -->
-    <script src="../../../vendor/admin-page/js/chartist.min.js" type="text/javascript"></script>
     <!--  Dynamic Elements plugin -->
     <script src="../../../vendor/admin-page/js/arrive.min.js" type="text/javascript"></script>
     <!--  PerfectScrollbar Library -->
     <script src="../../../vendor/admin-page/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../../../vendor/admin-page/js/bootstrap-notify.js" type="text/javascript"></script>
     <!-- Material Dashboard javascript methods -->
     <script src="../../../vendor/admin-page/js/material-dashboard.js" type="text/javascript"></script>
+    <!--Custom-->
+    <?php include '../../../model/admin/users/users.php' ?>
 
 </html>
-

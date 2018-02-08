@@ -16,6 +16,7 @@
             success: function (markers) {
 
                 markers.forEach(n => {
+                    console.log(n);
                     var posicion = new google.maps.LatLng(n.coordenada_x, n.coordenada_y);
                     var marker = new google.maps.Marker({
                         position: posicion,

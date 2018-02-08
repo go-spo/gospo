@@ -22,8 +22,12 @@ class GospoAPI {
                 $this->response(422, "error", "Nothing to add. Check json");
             } else if (isset($obj->nombre)) {
                 $db = new GospoDB();
-                $db->updateCentro($_GET['id'], $obj->nombre, $obj->telefono, $obj->email, $obj->direccion, $obj->municipio, $obj->provincia, $obj->pais, $obj->coordenada_x, $obj->coordenada_y);
-                $this->response(200, "success", "Record updated");
+                if ($db->checkIDCentro($_GET['id'])) {
+                    $db->updateCentro($_GET['id'], $obj->nombre, $obj->telefono, $obj->email, $obj->direccion, $obj->municipio, $obj->provincia, $obj->pais, $obj->coordenada_x, $obj->coordenada_y);
+                    $this->response(200, "success", "Record updated");
+                } else {
+                    $this->response(1061, "error", "ID no listada");
+                }
             } else {
                 $this->response(422, "error", "The property is not defined");
             }
@@ -197,11 +201,20 @@ class GospoAPI {
         if (empty($objArr)) {
             $this->response(422, "error", "Nothing to add. Check json");
         } else if (isset($obj->email)) {
-            $deporte = new GospoDB();
-            $deporte->insertUsuario($obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $obj->password, $obj->email);
+            $usuario = new GospoDB();
+            $usuario->insertUsuario($obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $obj->password, $obj->email);
             $this->response(200, "success", "Usuario added");
         } else {
             $this->response(422, "error", "The property is not defined");
+        }
+    }
+
+    function getUsuario() {
+        if (isset($_GET['id'])) {
+
+            $db = new GospoDB();
+            $response = $db->getUsuario($_GET['id']);
+            echo json_encode($response, JSON_PRETTY_PRINT);
         }
     }
 
@@ -220,8 +233,8 @@ class GospoAPI {
         if (empty($objArr)) {
             $this->response(422, "error", "Nothing to add. Check json");
         } else if (isset($obj->id_usuario)) {
-            $db = new GospoDB();
-            $db->updateUsuario($obj->id_usuario, $obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $obj->password, $obj->email, $obj->tipo_usuario, $obj->id_centro_administrado);
+            $usuario = new GospoDB();
+            $usuario->updateUsuario($obj->id_usuario, $obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $obj->password, $obj->email);
             $this->response(200, "success", "Usuario updated");
         } else {
             $this->response(422, "error", "The property is not defined");
@@ -254,6 +267,82 @@ class GospoAPI {
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
+    function checkUserEmail() {
+        $obj = json_decode(file_get_contents('php://input'));
+        $objArr = (array) $obj;
+        if (empty($objArr)) {
+            $this->response(422, "error", "Nothing to add. Check json");
+        } else if (isset($obj->email)) {
+            $db = new GospoDB();
+            if ($db->checkEmail($obj->email)) {
+                $this->response(1061, "error", "Email no valido");
+            } else {
+                $this->response(200, "success", "Email valido");
+            }
+        } else {
+            $this->response(422, "error", "The property is not defined");
+        }
+    }
+
+    function checkUserEmailUpd() {
+        $obj = json_decode(file_get_contents('php://input'));
+        $objArr = (array) $obj;
+        if (empty($objArr)) {
+            $this->response(422, "error", "Nothing to add. Check json");
+        } else if (isset($obj->email)) {
+            $db = new GospoDB();
+            if ($db->checkEmailUpd($obj->email, $obj->id_usuario)) {
+                //  $this->response(1061, "error", "Email no valido");
+                $response = array("status" => "error", "message" => "Email no valido");
+                echo json_encode($response, JSON_PRETTY_PRINT);
+            } else {
+                //  $this->response(200, "success", "Email valido");
+                $response = array("status" => "success", "message" => "Email valido");
+                echo json_encode($response, JSON_PRETTY_PRINT);
+            }
+        } else {
+            $this->response(422, "error", "The property is not defined");
+        }
+    }
+
+    function checkUserDNI() {
+        $obj = json_decode(file_get_contents('php://input'));
+        $objArr = (array) $obj;
+        if (empty($objArr)) {
+            $this->response(422, "error", "Nothing to add. Check json");
+        } else if (isset($obj->dni)) {
+            $db = new GospoDB();
+            if ($db->checkDNIupd($obj->dni)) {
+                $this->response(1061, "error", "DNI no valido");
+            } else {
+                $this->response(200, "success", "DNI valido");
+            }
+        } else {
+            $this->response(422, "error", "The property is not defined");
+        }
+    }
+
+    function checkUserDNIupd() {
+        $obj = json_decode(file_get_contents('php://input'));
+        $objArr = (array) $obj;
+        if (empty($objArr)) {
+            $this->response(422, "error", "Nothing to add. Check json");
+        } else if (isset($obj->dni)) {
+            $db = new GospoDB();
+            if ($db->checkDNIupd($obj->dni, $obj->id_usuario)) {
+               // $this->response(1061, "error", "DNI no valido");
+                 $response = array("status" => "error", "message" => "DNI no valido");
+                echo json_encode($response, JSON_PRETTY_PRINT);
+            } else {
+               // $this->response(200, "success", "DNI libre");
+                $response = array("status" => "success", "message" => "DNI valido");
+                echo json_encode($response, JSON_PRETTY_PRINT);
+            }
+        } else {
+            $this->response(422, "error", "The property is not defined");
+        }
+    }
+
     public function API() {
         header('Content-Type: application/JSON');
         $method = $_SERVER['REQUEST_METHOD'];
@@ -267,6 +356,8 @@ class GospoAPI {
                     $this->getDeportes();
                 } else if ($_GET['action'] == 'usuarios') {
                     $this->getUsuarios();
+                } else if ($_GET['action'] == 'usuario') {
+                    $this->getUsuario();
                 } else if ($_GET['action'] == 'totaldeportes') {
                     $this->getTotalDeportes();
                 } else if ($_GET['action'] == 'totalcentros') {
@@ -292,6 +383,10 @@ class GospoAPI {
                     $this->saveDeporte();
                 } else if ($_GET['action'] == 'usuarios') {
                     $this->saveUsuario();
+                } else if ($_GET['action'] == 'checkEmail') {
+                    $this->checkUserEmail();
+                } else if ($_GET['action'] == 'checkDNI') {
+                    $this->checkUserDNI();
                 } else {
                     $this->response(400);
                 }
@@ -303,10 +398,14 @@ class GospoAPI {
                     $this->updatePista();
                 } else if ($_GET['action'] == 'deportes') {
                     $this->updateDeporte();
-                } else if ($_GET['action'] == 'usuarios') {
+                } else if ($_GET['action'] == 'usuario') {
                     $this->updateUsuario();
                 } else if ($_GET['action'] == 'ultimaVisita') {
                     $this->setUltimaVisita();
+                } else if ($_GET['action'] == 'updateEmail') {
+                    $this->checkUserEmailUpd();
+                } else if ($_GET['action'] == 'updateDNI') {
+                    $this->checkUserDNIupd();
                 } else {
                     $this->response(400);
                 }
