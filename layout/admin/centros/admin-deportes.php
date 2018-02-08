@@ -1,5 +1,7 @@
-<?php ?>
-
+<?php
+session_start();
+if (isset($_SESSION['id_user_pag_principal'])) {
+?>
 <!doctype html>
 <html lang="en">
 
@@ -189,3 +191,10 @@
     <!--  Center Data -->
     <script src="../../../model/admin/deportes/admin-deportes.js" type="text/javascript"></script>
 </html>
+
+
+<?php
+} else {
+   include './not-found-page/not-found-page.php'; 
+}
+?>

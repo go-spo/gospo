@@ -107,7 +107,7 @@ if (isset($_GET["deporte"])) {
                             <button type="button" class=" nav-item__carro" data-toggle="modal" data-target="#Modal__carrito">
                                 <i class="fab fa-opencart fa-lg"></i><span class="nav-item__carro__contador"></span>
                             </button>
-                       <!--     <div><i class="fa fa-user-circle prefix"></i><span id="label-user" class=""> <?php if(isset($_SESSION['id_user'])){echo(" ".$_SESSION['usuario']);} ?> </span></div>
+                       <!--     <div><i class="fa fa-user-circle prefix"></i><span id="label-user" class=""> <?php if(isset($_SESSION['id_user_pag_principal'])){echo(" ".$_SESSION['usuario']);} ?> </span></div>
                             <div class="nav-item">
                             <a id="salir" class="nav-link nav-link-text" href="#">Log Out</a>
                             </div> -->

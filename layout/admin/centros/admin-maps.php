@@ -1,4 +1,7 @@
-<?php ?>
+<?php session_start();
+if (isset($_SESSION['id_user_pag_principal'])) {
+    
+    ?>
 <!doctype html>
 <html lang="en">
 
@@ -121,3 +124,8 @@
 
 </html>
 
+<?php
+} else {
+    include './not-found-page/not-found-page.php';
+}
+?>

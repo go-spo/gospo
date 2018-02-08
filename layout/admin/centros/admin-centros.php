@@ -1,4 +1,7 @@
-<?php ?>
+<?php
+session_start();
+if (isset($_SESSION['id_user_pag_principal'])) {
+?>
 
 <!doctype html>
 <html lang="en">
@@ -186,21 +189,28 @@
                 </div>
             </div>
         </div>
-    <?php include '../../../model/admin/modal/update.php'; ?>
-    <?php include '../../../model/admin/modal/delete.php'; ?>
-</body>
-<!--   Core JS Files   -->
-<script src="../../../vendor/admin-page/js/jquery-3.2.1.min.js" type="text/javascript"></script>
-<script src="../../../vendor/admin-page/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../../../vendor/admin-page/js/material.min.js" type="text/javascript"></script>
-<!--  Dynamic Elements plugin -->
-<script src="../../../vendor/admin-page/js/arrive.min.js" type="text/javascript"></script>
-<!--  PerfectScrollbar Library -->
-<script src="../../../vendor/admin-page/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
-<!--  Notifications Plugin    -->
-<script src="../../../vendor/admin-page/js/bootstrap-notify.js" type="text/javascript"></script>
-<!-- Material Dashboard javascript methods -->
-<script src="../../../vendor/admin-page/js/material-dashboard.js" type="text/javascript"></script>
-<!--  Center Data -->
-<script src="../../../model/admin/centros/admin-centros.js" type="text/javascript"></script>
+        <?php include '../../../model/admin/modal/update.php'; ?>
+        <?php include '../../../model/admin/modal/delete.php'; ?>
+    </body>
+    <!--   Core JS Files   -->
+    <script src="../../../vendor/admin-page/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="../../../vendor/admin-page/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../vendor/admin-page/js/material.min.js" type="text/javascript"></script>
+    <!--  Dynamic Elements plugin -->
+    <script src="../../../vendor/admin-page/js/arrive.min.js" type="text/javascript"></script>
+    <!--  PerfectScrollbar Library -->
+    <script src="../../../vendor/admin-page/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../../../vendor/admin-page/js/bootstrap-notify.js" type="text/javascript"></script>
+    <!-- Material Dashboard javascript methods -->
+    <script src="../../../vendor/admin-page/js/material-dashboard.js" type="text/javascript"></script>
+    <!--  Center Data -->
+    <script src="../../../model/admin/centros/admin-centros.js" type="text/javascript"></script>
 </html>
+
+
+<?php
+} else {
+    include './not-found-page/not-found-page.php';
+}
+?>
