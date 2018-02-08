@@ -40,8 +40,11 @@ if (isset($_GET["deporte"])) {
         <link href="../styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
         <!-- Carro compra-->
         <link href="../styles/css/carro.css" rel="stylesheet" type="text/css"/>
+        <!-- Your custom styles login --> 
+        <link href="../styles/css/login_registro.css" rel="stylesheet">
     </head>
     <body>
+        <script type="text/javascript"> console.log(document.referrer);</script>
         <!--Jquery and Jquery UI -->
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -70,6 +73,8 @@ if (isset($_GET["deporte"])) {
         <script src="../model/cart/modal.js" type="text/javascript"></script>
         <!-- Effects-->
         <script src="../vendor/jquery/effects/slider.js" type="text/javascript"></script>
+        <!-- LOGIN -->
+        <script src="../model/login_registro/js/registro_rcb.js" type="text/javascript"></script>
 
         <div class="container-grid">
             <div class="header">
@@ -96,12 +101,16 @@ if (isset($_GET["deporte"])) {
                                     <a class="nav-link" href="#">Contact</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-primary nav-login" href="#"><span class="nav-login-color">Log In</span></a>
+                                    <a id="abrir" class="nav-link btn btn-primary nav-login" href="#"><span class="nav-login-color">Log In</span></a>
                                 </li>
                             </ul>
                             <button type="button" class=" nav-item__carro" data-toggle="modal" data-target="#Modal__carrito">
                                 <i class="fab fa-opencart fa-lg"></i><span class="nav-item__carro__contador"></span>
                             </button>
+                       <!--     <div><i class="fa fa-user-circle prefix"></i><span id="label-user" class=""> <?php if(isset($_SESSION['id_user'])){echo(" ".$_SESSION['usuario']);} ?> </span></div>
+                            <div class="nav-item">
+                            <a id="salir" class="nav-link nav-link-text" href="#">Log Out</a>
+                            </div> -->
                         </div>
                     </div>
                 </nav>
@@ -207,6 +216,161 @@ if (isset($_GET["deporte"])) {
                 </div>
             </div>
         </div>
+        
+        <!--Modal: Login / Register Form-->
+    <div  class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Modal cascading tabs-->
+                <div class="modal-c-tabs">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
+                        <li class="nav-item">
+                            <a id="tablogin" class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
+                                <i class="fa fa-user mr-1"></i> Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tabregistro" class="nav-link" data-toggle="tab" href="#panel8" role="tab">
+                                <i class="fa fa-user-plus mr-1"></i> Registro</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panels -->
+                    <div class="tab-content">
+                        <!--Panel 7-->
+                        <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+                            <div id="form-sign-in">
+                                <!--Body-->
+                                <div class="modal-body mb-1">
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-envelope prefix"></i>
+                                        <input id="youremail" type="email" name="youremail" class="form-control"  required="required">
+                                        <label for="youremail" class="etiqueta">Email</label>
+                                        <label id="info-email" for="noexiste" class="error"></label>
+                                    </div>
+
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-lock prefix"></i>
+                                        <input type="password" id="yourpassword" name="yourpassword" class="form-control" maxlength="12" required="required">
+                                        <label for="yourpassword" class="etiqueta">Contraseña</label>
+                                        <label id="info-pwd" for="noexiste" class="error"></label>
+                                    </div>
+                                    <div class="text-center mt-2">
+                                        <button id="btn-login" class="btn btn-info" disabled="">Log in
+                                            <i class="fa fa-sign-in-alt ml-1"></i>
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            
+                            <!--Footer-->
+                            <div class="modal-footer display-footer">
+                                <div class="options text-center text-md-right mt-1">
+                                    <p>¿Todavía no eres miembro?
+                                        <a id="registrate" href="#panel8" class="blue-text">Regístrate</a>
+                                        <!-- ruta a registrarse-->
+                                    </p>
+                                    <p>¿Olvidaste tu
+                                        <a href="#" class="blue-text">Contraseña?</a>
+                                    </p>
+                                </div>
+                                <button id="cerrarlogin" type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
+                            </div>
+
+                        </div>
+                        <!--/.Panel 7-->
+
+                        <!--Panel 8-->
+                        <div class="tab-pane fade" id="panel8" role="tabpanel">
+                            <div id="form-sign-up">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-address-card prefix"></i>
+                                        <input type="text" id="dni" class="form-control" name="dni" maxlength="9" required="required">
+                                        <label for="dni" class="etiqueta">DNI</label>
+                                        <label for="noexiste" class="error"></label>
+                                    </div>
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-user-circle prefix"></i>
+                                        <input type="text" id="nombre" class="form-control" name="nombre" maxlength="45" required="required">
+                                        <label for="nombre" class="etiqueta">Nombre</label>
+                                        <label for="noexiste" class="error"></label>
+                                    </div>
+
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-user prefix"></i>
+                                        <input type="text" id="apellido1" class="form-control" name="apellido1" maxlength="45" required="required">
+                                        <label for="apellido1" class="etiqueta">Apellido 1</label>
+                                        <label for="noexiste" class="error"></label>
+                                    </div>
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-user prefix"></i>
+                                        <input type="text" id="apellido2" class="form-control" name="apellido2" maxlength="45" required="required">
+                                        <label for="apellido2" class="etiqueta">Apellido 2</label>
+                                        <label for="noexiste" class="error"></label>
+                                    </div>
+
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-star prefix"></i>
+                                        <input type="text" id="nick" class="form-control" name="nick" maxlength="45" required="required">
+                                        <label for="nick" class="etiqueta">Nick</label>
+                                        <label for="noexiste" class="error"></label>
+                                    </div>
+
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-envelope prefix"></i>
+                                        <input type="email" id="email" class="form-control" name="email" maxlength="45" required="required">
+                                        <label for="email" class="etiqueta">email</label>
+                                        <label for="noexiste" class="error"></label>
+                                    </div>
+
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-lock prefix"></i>
+                                        <input type="password" id="password" class="form-control" name="password" maxlength="12" required="required"> 
+                                        <label for="password" class="etiqueta">Password</label>
+                                        <label for="noexiste" class="error"></label>
+                                    </div>
+
+                                    <div class="md-form form-sm">
+                                        <i class="fa fa-lock prefix"></i>
+                                        <input type="password" id="password2" class="form-control" name="password2" maxlength="12" required="required">
+                                        <label for="password2" class="etiqueta">Repetir password</label>
+                                        <label for="noexiste" class="error"></label>
+                                    </div>
+
+                                    <div class="text-center form-sm mt-2">
+                                        <button type="submit" id="btn-registro" class="btn btn-info" disabled="">Sign up
+                                            <i class="fa fa-sign-in-alt ml-1"></i>
+
+                                        </button>
+                                    </div>
+                            </div>
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="options text-right">
+                                    <p class="pt-1">¿Ya tienes una cuenta?
+                                        <a id="linklogin" href="#" class="blue-text">Log In</a>
+                                    </p>
+                                </div>
+                                <button id="cerrar" type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!--/.Panel 8-->
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: Login / Register Form-->
 
         <script>
                     $('.left_inner').resizable();
