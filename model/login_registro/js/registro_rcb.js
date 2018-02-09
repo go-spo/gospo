@@ -73,11 +73,11 @@ $(document).ready(function () {
 
         $.each(inputs, function (idx, val) {
 
-            $(this).text('');
+            $(this).val('');
         });
         $.each(inputs_, function (idx, val) {
 
-            $(this).text('');
+            $(this).val('');
         });
 
         //mostrar todas las etiquetas
@@ -235,7 +235,7 @@ $(document).ready(function () {
                 console.log(sesion);
                 if (sesion.establecida === 'true') {
                     var valorusuario = sesion.usuario;
-                    $('#label-user').text(" " + valorusuario);
+                //    $('#label-user').text(" " + valorusuario);   DESCOMENTAR PARA USUARIOS DEPORTISTAS
                     //return true;
                 } else {
 
@@ -265,14 +265,14 @@ $(document).ready(function () {
                     limpiarDatosForms();
                     desvincularEventos();
                     $('#modalLRForm').modal('hide');  //fadeOut('3000')
-                    window.location = "layout/admin/centros/admin-index.php";
+                    window.location = "admin/centros/admin-index.php";
                 } else if (data.status === 'successuser') {
                     //alert(data.message);
-                    var usuario = data.usuario;
+                  //  var usuario = data.usuario;
                     //rellenar div con nombre e icono
-                    $('#label-user').text(" " + usuario);
+                  //  $('#label-user').text(" " + usuario);  DESCOMENTAR PARA LOGIN USUARIOS DEPORTISTA
                     limpiarDatosForms();
-                    desvincularEventos();
+                    desvincularEventos_();
                     $('#modalLRForm').modal('hide');
                     location.reload(true);
                     // window.location = window.location.href;
@@ -280,18 +280,31 @@ $(document).ready(function () {
                 } else if (data.status === 'erroracceso') {
                     alert(data.message);
                     limpiarDatosForms();
-                    desvincularEventos();
-                    $('#modalLRForm').modal('hide');
-                    window.location = window.location.href;
-                    location.reload(true);
+                    //$("#info-email").hide();
+                    //$("#info-pwd").hide();
+                   // desvincularEventos_();
+                   // $('#modalLRForm').modal('hide');
+                   // window.location = window.location.href;
+                   // location.reload(true);
 
-                } else if (data.status === 'errorregistrado') {
+                } else if (data.status === 'errornoregistrado') {
                     alert(data.message);
                     limpiarDatosForms();
-                    desvincularEventos();
-                    $('#modalLRForm').modal('hide');
-                    window.location = window.location.href;
-                    location.reload(true);
+                    //$("#info-email").hide();
+                    //$("#info-pwd").hide();
+                   // desvincularEventos_();
+                   // $('#modalLRForm').modal('hide');
+                   // window.location = window.location.href;
+                   // location.reload(true);
+                   setTimeout(function () {
+                        $("#form-sign-in").trigger('reset');
+                        $('#tabregistro').attr("class", "nav-link active");
+                        $('#panel7').attr("class", "tab-pane fade");
+                        $('#tablogin').attr("class", "nav-link");
+                        $('#panel8').attr("class", "tab-pane fade in show active");
+                        // $('#modalLRForm').modal('hide');
+                        //location.reload(true);
+                    }, 1000);
                 }
 
             }
@@ -407,18 +420,19 @@ $(document).ready(function () {
 
     $('#youremail').on('keypress focusout', function () {
         var texto = $('#youremail').val();
-        // emailOK = false;
+       checkForm("#btn-login");
         if (texto === "") {
             $('#info-email').text('Campo requerido');
             $('#info-email').attr("class", "error");
+            checkForm("#btn-login");
         } else {
             emailOK = emailchecker(texto);
             if (!emailOK) {
                 $('#info-email').text('La dirección de email debe contener @ y .');
                 $('#info-email').attr("class", "error");
-
+                checkForm("#btn-login");
             } else {
-                //emailOK = true;
+                
                 $('#info-email').text('ok');
                 $('#info-email').attr("class", "valid");
                 checkForm("#btn-login");
@@ -429,15 +443,17 @@ $(document).ready(function () {
 
     $('#yourpassword').on('keyup focusout', function () {
         var texto1 = $('#yourpassword').val();
-        // pwdOK = false;
+        checkForm("#btn-login");
         if (texto1 === "") {
             $('#info-pwd').text('Campo requerido');
             $('#info-pwd').attr("class", "error");
+            checkForm("#btn-login");
         } else {
             pwdOK = passwordchecker(texto1);
             if (!pwdOK) {
                 $('#info-pwd').text('Mínimo de 8 caracteres, mayúscula, minúscula y número');
                 $('#info-pwd').attr("class", "error");
+                checkForm("#btn-login");
 
             } else {
                 pwdOK = true;
@@ -483,23 +499,25 @@ $(document).ready(function () {
     // ===============================================================
     // ===============================================================
 
-    $('#email').on('keypress focusout', function () {
+    $('#email').on('keyup focusout focusin', function () {
         var texto = $('#email').val();
-
+        checkForm2("#btn-registro");
         if (texto === "") {
             $('#iemail').text('Campo requerido');
             $('#iemail').attr("class", "error");
+            checkForm2("#btn-registro");
         } else {
             var emailB = emailchecker(texto);
             if (!emailB) {
                 $('#iemail').text('La dirección de email debe contener @ y .');
                 $('#iemail').attr("class", "error");
+                checkForm2("#btn-registro");
 
             } else {
 
                 $('#iemail').text('ok');
                 $('#iemail').attr("class", "valid");
-                checkForm("#btn-registro");
+                checkForm2("#btn-registro");
             }
         }
 
@@ -539,83 +557,93 @@ function comprobarEmailBD(datoEmail){
         }
 }
 
-    $('#password').on('keyup focusout', function () {
+    $('#password').on('keyup focusout focusin', function () {
         var texto1 = $('#password').val();
-
+        checkForm2("#btn-registro");
         if (texto1 === "") {
             $('#ipassword').text('Campo requerido');
             $('#ipassword').attr("class", "error");
+            checkForm2("#btn-registro");
         } else {
             var pwdB = passwordchecker(texto1);
             if (!pwdB) {
                 $('#ipassword').text('Mínimo de 8 caracteres, mayúscula, minúscula y número');
                 $('#ipassword').attr("class", "error");
+                checkForm2("#btn-registro");
 
             } else {
-                pwdB = true;
+                
                 $('#ipassword').text('ok');
                 $('#ipassword').attr("class", "valid");
-                checkForm("#btn-registro");
+                checkForm2("#btn-registro");
             }
         }
 
     });
+    
+    
 
-    $('#dni').on('keyup focusout', function () {
+    $('#dni').on('keyup focusout focusin', function () {
         var texto1 = $('#dni').val();
-
+        checkForm2("#btn-registro");
         if (texto1 === "") {
             $('#idni').text('Campo requerido');
             $('#idni').attr("class", "error");
+            checkForm2("#btn-registro");
         } else {
             var dniOK = dnichecker(texto1);
             if (!dniOK) {
-                $('#idni').text('Mínimo de 8 caracteres, mayúscula, minúscula y número');
+                $('#idni').text('El dni no tiene el formato adecuado o es incorrecto');
                 $('#idni').attr("class", "error");
+                checkForm2("#btn-registro");
 
             } else {
                 dniOK = true;
                 $('#idni').text('ok');
                 $('#idni').attr("class", "valid");
-                checkForm("#btn-registro");
+                checkForm2("#btn-registro");
             }
         }
 
     });
 
-    $('#nombre').on('keyup focusout', function () {
+    $('#nombre').on('keyup focusout focusin', function () {
         var texto1 = $('#nombre').val();
-
+        checkForm2("#btn-registro");
         if (texto1 === "") {
             $('#inombre').text('Campo requerido');
             $('#inombre').attr("class", "error");
+            checkForm2("#btn-registro");
         } else {
             var nameOK = namechecker(texto1);
             if (!nameOK) {
-                $('#inombre').text('Mínimo de 8 caracteres, mayúscula, minúscula y número');
+                $('#inombre').text('El nombre no debe contener números');
                 $('#inombre').attr("class", "error");
+                checkForm2("#btn-registro");
 
             } else {
                 nameOK = true;
                 $('#inombre').text('ok');
                 $('#inombre').attr("class", "valid");
-                checkForm("#btn-registro");
+                checkForm2("#btn-registro");
             }
         }
 
     });
 
- $('#apellido1').on('keyup focusout', function () {
+ $('#apellido1').on('keyup focusout focusin', function () {
         var texto1 = $('#apellido1').val();
-
+        checkForm2("#btn-registro");
         if (texto1 === "") {
             $('#iapellido1').text('Campo requerido');
             $('#iapellido1').attr("class", "error");
+            checkForm2("#btn-registro");
         } else {
             var nameOK = namechecker(texto1);
             if (!nameOK) {
-                $('#iapellido1').text('El nombre no debe contener números');
+                $('#iapellido1').text('El apellido no debe contener números');
                 $('#iapellido1').attr("class", "error");
+                checkForm2("#btn-registro");
 
             } else {
 
@@ -627,17 +655,19 @@ function comprobarEmailBD(datoEmail){
 
     });
 
-    $('#apellido2').on('keyup focusout', function () {
+    $('#apellido2').on('keyup focusout focusin', function () {
         var texto1 = $('#apellido1').val();
-
+        checkForm2("#btn-registro");
         if (texto1 === "") {
             $('#iapellido2').text('Campo requerido');
             $('#iapellido2').attr("class", "error");
+            checkForm2("#btn-registro");
         } else {
             var nameOK = namechecker(texto1);
             if (!nameOK) {
-                $('#iapellido2').text('El nombre no debe contener números');
+                $('#iapellido2').text('El apellido no debe contener números');
                 $('#iapellido2').attr("class", "error");
+                checkForm2("#btn-registro");
 
             } else {
 
@@ -665,7 +695,7 @@ function comprobarEmailBD(datoEmail){
         //var nick = $('#nick').val();
         var email = $('#email').val();
         var password = $('#password').val();
-        var password2 = $('#password').val();
+        var password2 = $('#password2').val();
        // var control = comprobarEmailBD(email);   // control &&
         
         if (password === password2){
@@ -682,7 +712,6 @@ function comprobarEmailBD(datoEmail){
             
         if ( dnichecker(dni) &&
             emailchecker(email) && 
-            
             passwordchecker(password) && coinciden &&
             namechecker(apellido1) &&
             namechecker(apellido2) &&
@@ -727,10 +756,14 @@ function comprobarEmailBD(datoEmail){
             dataType: 'json',
             data: datosEnviar,
             success: function (datos) {
-                alert(datos);
+                //alert(datos);
+                    limpiarDatosForms();
+                    desvincularEventos();
+                    $('#modalLRForm').modal('hide');
+                    location.reload(true);
             },
             error: function (datos) {
-                alert(datos);
+               // alert(datos);
                 alert("Se ha producido un error inesperado, inténtelo de nuevo más tarde");
 
             }

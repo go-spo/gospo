@@ -21,13 +21,15 @@ if( isset($_POST['dni']) && isset($_POST['email']) && isset($_POST['password']) 
     $apellido2 = $_POST['apellido2'];
     $nick = $_POST['nick'];
     
+    $tipo_usuario="deportista"; //por defecto se registran como deportistas
+    
     //Generamos el hash a partir de la contraseña para almacenarlo en la base de datos
     $hash = password_hash ($contrasenya , PASSWORD_DEFAULT);
     
-    $query = "INSERT INTO usuarios(dni,nombre,apellido1,apellido2,nick,password,email) VALUES(?,?,?,?,?,?,?)";
+    $query = "INSERT INTO usuarios(dni,nombre,apellido1,apellido2,nick,password,email,tipo_usuario) VALUES(?,?,?,?,?,?,?,?)";
     $stmt=$conector->prepare($query);
    
-    $stmt->bind_param('sssssss',$dni,$nombre,$apellido1,$apellido2,$nick,$hash,$correo);
+    $stmt->bind_param('ssssssss',$dni,$nombre,$apellido1,$apellido2,$nick,$hash,$correo,$tipo_usuario);
    //if(!$stmt->execute()) echo $stmt->error;
    
     

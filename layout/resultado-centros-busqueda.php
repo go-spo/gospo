@@ -275,9 +275,9 @@ if (isset($_GET["deporte"])) {
                                         <a id="registrate" href="#panel8" class="blue-text">Regístrate</a>
                                         <!-- ruta a registrarse-->
                                     </p>
-                                    <p>¿Olvidaste tu
+                               <!--     <p>¿Olvidaste tu
                                         <a href="#" class="blue-text">Contraseña?</a>
-                                    </p>
+                                    </p> -->
                                 </div>
                                 <button id="cerrarlogin" type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
                             </div>
@@ -294,54 +294,54 @@ if (isset($_GET["deporte"])) {
                                         <i class="fa fa-address-card prefix"></i>
                                         <input type="text" id="dni" class="form-control" name="dni" maxlength="9" required="required">
                                         <label for="dni" class="etiqueta">DNI</label>
-                                        <label for="noexiste" class="error"></label>
+                                        <label id="idni" for="noexiste" class="error"></label>
                                     </div>
                                     <div class="md-form form-sm">
                                         <i class="fa fa-user-circle prefix"></i>
                                         <input type="text" id="nombre" class="form-control" name="nombre" maxlength="45" required="required">
                                         <label for="nombre" class="etiqueta">Nombre</label>
-                                        <label for="noexiste" class="error"></label>
+                                        <label id="inombre" for="noexiste" class="error"></label>
                                     </div>
 
                                     <div class="md-form form-sm">
                                         <i class="fa fa-user prefix"></i>
                                         <input type="text" id="apellido1" class="form-control" name="apellido1" maxlength="45" required="required">
                                         <label for="apellido1" class="etiqueta">Apellido 1</label>
-                                        <label for="noexiste" class="error"></label>
+                                        <label id="iapellido1" for="noexiste" class="error"></label>
                                     </div>
                                     <div class="md-form form-sm">
                                         <i class="fa fa-user prefix"></i>
                                         <input type="text" id="apellido2" class="form-control" name="apellido2" maxlength="45" required="required">
                                         <label for="apellido2" class="etiqueta">Apellido 2</label>
-                                        <label for="noexiste" class="error"></label>
+                                        <label id="iapellido2" for="noexiste" class="error"></label>
                                     </div>
 
                                     <div class="md-form form-sm">
                                         <i class="fa fa-star prefix"></i>
                                         <input type="text" id="nick" class="form-control" name="nick" maxlength="45" required="required">
                                         <label for="nick" class="etiqueta">Nick</label>
-                                        <label for="noexiste" class="error"></label>
+                                        <label id="inick" for="noexiste" class="error"></label>
                                     </div>
 
                                     <div class="md-form form-sm">
                                         <i class="fa fa-envelope prefix"></i>
                                         <input type="email" id="email" class="form-control" name="email" maxlength="45" required="required">
                                         <label for="email" class="etiqueta">email</label>
-                                        <label for="noexiste" class="error"></label>
+                                        <label id="iemail" for="noexiste" class="error"></label>
                                     </div>
 
                                     <div class="md-form form-sm">
                                         <i class="fa fa-lock prefix"></i>
                                         <input type="password" id="password" class="form-control" name="password" maxlength="12" required="required"> 
                                         <label for="password" class="etiqueta">Password</label>
-                                        <label for="noexiste" class="error"></label>
+                                        <label id="ipassword" for="noexiste" class="error"></label>
                                     </div>
 
                                     <div class="md-form form-sm">
                                         <i class="fa fa-lock prefix"></i>
                                         <input type="password" id="password2" class="form-control" name="password2" maxlength="12" required="required">
                                         <label for="password2" class="etiqueta">Repetir password</label>
-                                        <label for="noexiste" class="error"></label>
+                                        <label id="ipassword2" for="noexiste" class="error"></label>
                                     </div>
 
                                     <div class="text-center form-sm mt-2">

@@ -110,26 +110,26 @@ $(document).ready(function () {
 
             });
             $("#boton__reservar").on("click", function () {
-                var url = "";
-                url = "../model/login_registro/php/checksession.php"; 
+               // var url = "";
+               // url = "../model/login_registro/php/checksession.php"; 
                 
-                var text = 'enviado';
-                $.ajax({
+               // var text = 'enviado';
+               // $.ajax({
                     
-                    url: url,
-                    type: 'post',
-                    dataType: 'json',
-                    data: {secure: text} ,
-                    success: function(sesion){
-                        console.log(sesion);
-                        if(sesion.establecida === 'true'){
+                 //   url: url,
+                   // type: 'post',
+                   // dataType: 'json',
+                   // data: {secure: text} ,
+                  //  success: function(sesion){
+                    //    console.log(sesion);
+                      //  if(sesion.establecida === 'true'){
                             $("#Comprar-Reservas").modal("show");  //codigo original
-                        }else{
-                            alert("Para realizar reservas es necesario iniciar sesión de usuario LOG IN");
-                        }
-                    }
+                      //  }else{
+                      //      alert("Para realizar reservas es necesario iniciar sesión de usuario LOG IN");
+                      //  }
+                  //  }
                     
-                });
+              //  });
                 
 
             });
