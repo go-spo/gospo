@@ -271,7 +271,7 @@ class GospoDB {
 
     public function updateUsuarioFoto($id_usuario, $foto) {
         $stmt = $this->mysqli->prepare("UPDATE usuarios SET foto=? WHERE id_usuario=?; ");
-        $stmt->bind_param('si', $foto, $id_usuario);
+        $stmt->bind_param('ss', $foto, $id_usuario);
         $r = $stmt->execute();
         $stmt->close();
         return $r;
