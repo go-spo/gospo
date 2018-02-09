@@ -6,7 +6,7 @@
         carga();
         function carga() {
             $.ajax({
-                url: 'http://localhost/gospo/vendor/GospoAPI/usuario/' + id,
+                url: '../../../vendor/GospoAPI/usuario/' + id,
                 dataType: 'json',
                 type: 'GET',
                 success: function (user) {
@@ -59,7 +59,7 @@
             ///////////////Comporbación Email //////////////
 
             $.ajax({
-                url: 'http://localhost/gospo/vendor/GospoAPI/updateEmail',
+                url: '../../../vendor/GospoAPI/updateEmail',
                 dataType: 'json',
                 type: 'PUT',
                 data: JSON.stringify(checkMail),
@@ -77,7 +77,7 @@
             /////////////////Comprobación de DNI ////////////
 
             $.ajax({
-                url: 'http://localhost/gospo/vendor/GospoAPI/updateDNI',
+                url: '../../../vendor/GospoAPI/updateDNI',
                 dataType: 'json',
                 type: 'PUT',
                 data: JSON.stringify(checkDNI),
@@ -108,7 +108,7 @@
                     usuario = {"id_usuario": id, "dni": dni, "nombre": nombre, "apellido1": apellido1,
                         "apellido2": apellido2, "nick": nick, "password": pass1, "email": email};
                     $.ajax({
-                        url: 'http://localhost/gospo/vendor/GospoAPI/usuario',
+                        url: '../../../vendor/GospoAPI/usuario',
                         dataType: 'json',
                         type: 'PUT',
                         data: JSON.stringify(usuario),
@@ -123,7 +123,7 @@
                     usuarioNP = {"id_usuario": id, "dni": dni, "nombre": nombre, "apellido1": apellido1,
                         "apellido2": apellido2, "nick": nick, "email": email};
                     $.ajax({
-                        url: 'http://localhost/gospo/vendor/GospoAPI/usuarioNoPass',
+                        url: '../../../vendor/GospoAPI/usuarioNoPass',
                         dataType: 'json',
                         type: 'PUT',
                         data: JSON.stringify(usuarioNP),
@@ -159,7 +159,7 @@
                     $("#imagen-usuario").attr("src", '../../../resources/img/usuarios/' + file_data["name"]);
                     var jsonImg = {"id_usuario": id, "foto": ruta};
                     $.ajax({
-                        url: 'http://localhost/gospo/vendor/GospoAPI/usuarioFoto', // point to server-side PHP script
+                        url: '../../../vendor/GospoAPI/usuarioFoto', // point to server-side PHP script
                         dataType: 'json', // what to expect back from the PHP script, if anything
                         data: JSON.stringify(jsonImg),
                         type: 'PUT',

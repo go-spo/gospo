@@ -135,7 +135,7 @@ class GospoAPI {
             $this->response(422, "error", "Nothing to add. Check json");
         } else if (isset($obj->nombre)) {
             $deporte = new GospoDB();
-            $deporte->insertDeporte($obj->nombre, $obj->descripcion, $obj->tags, $obj->icono_full, $obj->icono_empty, $obj->imagen, $obj->color);
+            $deporte->insertDeporte($obj->nombre, $obj->descripcion, null, null,null, $obj->imagen, null);
             $this->response(200, "success", "new Sport added");
         } else {
             $this->response(422, "error", "The property is not defined");
@@ -150,7 +150,7 @@ class GospoAPI {
             $this->response(422, "error", "Nothing to add. Check json");
         } else if (isset($obj->id_deporte)) {
             $db = new GospoDB();
-            $db->updateDeporte($obj->id_deporte, $obj->descripcion, $obj->tags, $obj->icono_full, $obj->icono_empty, $obj->imagen, $obj->color);
+            $db->updateDeporte($obj->id_deporte, $obj->descripcion, null,null, null, $obj->imagen, null);
             $this->response(200, "success", "Deporte updated");
         } else {
             $this->response(422, "error", "The property is not defined");

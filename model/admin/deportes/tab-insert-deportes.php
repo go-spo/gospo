@@ -19,7 +19,7 @@
                     <div class="col-md-6">
                         <div class="form-group label-floating">
                             <label class="control-label">Descripción</label>
-                            <input type="text" name="descripción-insert-deporte" class="form-control">
+                            <input type="text" name="descripcion-insert-deporte" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-3">
