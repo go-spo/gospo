@@ -1,105 +1,80 @@
-
 /* =================== gradient animation ==============*/
-
-
 @keyframes Gradient {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
-}
+  0% {
+    background-position: 0% 50%; }
+  50% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 0% 50%; } }
 
-.icon-link{
-    color:gray;
-    cursor: pointer;
-}
+.icon-link {
+  color: gray;
+  cursor: pointer; }
 
 .modal-header {
-    color: white;
-    background: linear-gradient(-45deg, #e54b4b, #e54b4b, #23A6D5, #23D5AB);
-    background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-}
+  color: white;
+  background: linear-gradient(-45deg, #e54b4b, #e54b4b, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important; }
 
-.modal-header-update{
-     color: white;
-    background: linear-gradient(-45deg, #7e57c2, #7e57c2, #23A6D5, #23D5AB);
-    background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-}
+.modal-header-update {
+  color: white;
+  background: linear-gradient(-45deg, #7e57c2, #7e57c2, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important; }
 
-.modal-header-update-profile{
-     color: white;
-    background: linear-gradient(-45deg, #009688, #009688, #23A6D5, #23D5AB);
-    background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-}
+.modal-header-update-profile {
+  color: white;
+  background: linear-gradient(-45deg, #009688, #009688, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important; }
 
-.close{
-    color: white !important;
-    font-size: 28px;
-}
+.close {
+  color: white !important;
+  font-size: 28px; }
 
-#input-search{
-    width: 80%;
-    background-color: transparent;
-    padding: 2px;
-    padding-left: 8px;
-    font-size:16px;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    color:white; 
-    border:0px;
-    border-bottom: 1px solid white;
-}
+#input-search {
+  width: 80%;
+  background-color: transparent;
+  padding: 2px;
+  padding-left: 8px;
+  font-size: 16px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: white;
+  border: 0px;
+  border-bottom: 1px solid white; }
 
-#input-search:active{
-    border-color:red;
-}
+#input-search:active {
+  border-color: red; }
 
 #input-search::placeholder {
-    color:white;  
-}
+  color: white; }
 
 /*----------------- images -----------------------*/
-
-
-
-
 .file_input_div {
-    margin: auto !important;
-    width: 250px !important;
-    height: 40px !important;
-}
+  margin: auto !important;
+  width: 250px !important;
+  height: 40px !important; }
 
 .file_input {
-    float: left !important;
-}
+  float: left !important; }
 
 #file_input_text_div {
-    width: 200px !important;
-    margin-top: 8px !important;
-    float: right !important;
-}
+  width: 200px !important;
+  margin-top: 8px !important;
+  float: right !important; }
 
 .none {
-    display: none !important;
-}
+  display: none !important; }
 
-.icon-image-insert{
-    margin: 0px 7px 2px 3px;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
-}
-
+.icon-image-insert {
+  margin: 0px 7px 2px 3px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%; }
