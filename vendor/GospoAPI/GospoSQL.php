@@ -53,8 +53,8 @@ class GospoDB {
         return $r;
     }
 
+    /* La imagen por el momento no */
 
-    /*La imagen por el momento no*/
     public function updateCentro($id, $nombre, $telefono, $email, $direccion, $municipio, $provincia, $pais, $coordenada_X, $coordenada_Y) {            // cambia el nombre de un usuario con id X por otro nombre insertado
         if ($this->checkIDCentro($id)) {
             $stmt = $this->mysqli->prepare("UPDATE Centros SET nombre=?,telefono=?,email=?,direccion=?,municipio=?,provincia=?,pais=?,coordenada_x=?,coordenada_y=? WHERE id_centro = ? ; ");
@@ -91,10 +91,10 @@ class GospoDB {
             }
         }
     }
-    
-        public function checkEmailUpd($email,$id) {
+
+    public function checkEmailUpd($email, $id) {
         $stmt = $this->mysqli->prepare("SELECT * FROM usuarios WHERE email=? and id_usuario != ?;");
-        $stmt->bind_param('si', $email,$id);
+        $stmt->bind_param('si', $email, $id);
         if ($stmt->execute()) {
             $stmt->store_result();
             if ($stmt->num_rows == 0) {
@@ -117,14 +117,15 @@ class GospoDB {
             }
         }
     }
-        public function checkDNIupd($dni,$id) {
+
+    public function checkDNIupd($dni, $id) {
         $stmt = $this->mysqli->prepare("SELECT * FROM usuarios WHERE dni=? and id_usuario != ?;");
-        $stmt->bind_param('si', $dni,$id);
+        $stmt->bind_param('si', $dni, $id);
         if ($stmt->execute()) {
             $stmt->store_result();
-            
+
             if ($stmt->num_rows == 0) {
-                
+
                 return false;
             } else {
                 return true;
@@ -197,7 +198,7 @@ class GospoDB {
         $pistas = $result->fetch_all(MYSQLI_ASSOC);
         $result->close();
         return $pistas;
-    }  
+    }
 
     public function getTotalDeportes() {
         $result = $this->mysqli->query('select count(*) as "totalDeportes" from deportes;');
@@ -263,6 +264,22 @@ class GospoDB {
     public function updateUsuario($id_usuario, $dni, $nombre, $apellido1, $apellido2, $nick, $password, $email) {
         $stmt = $this->mysqli->prepare("UPDATE usuarios SET dni=?,nombre=?,apellido1=?,apellido2=?,nick=?,password=?,email=? WHERE id_usuario=?; ");
         $stmt->bind_param('sssssssi', $dni, $nombre, $apellido1, $apellido2, $nick, $password, $email, $id_usuario);
+        $r = $stmt->execute();
+        $stmt->close();
+        return $r;
+    }
+
+    public function updateUsuarioFoto($id_usuario, $foto) {
+        $stmt = $this->mysqli->prepare("UPDATE usuarios SET foto=? WHERE id_usuario=?; ");
+        $stmt->bind_param('si', $foto, $id_usuario);
+        $r = $stmt->execute();
+        $stmt->close();
+        return $r;
+    }
+
+    public function updateUsuarioNopass($id_usuario, $dni, $nombre, $apellido1, $apellido2, $nick, $email) {
+        $stmt = $this->mysqli->prepare("UPDATE usuarios SET dni=?,nombre=?,apellido1=?,apellido2=?,nick=?,email=? WHERE id_usuario=?; ");
+        $stmt->bind_param('ssssssi', $dni, $nombre, $apellido1, $apellido2, $nick, $email, $id_usuario);
         $r = $stmt->execute();
         $stmt->close();
         return $r;

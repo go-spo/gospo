@@ -17,8 +17,7 @@
                         $("#User-nombre").val(n.nombre);
                         $("#User-apellido1").val(n.apellido1);
                         $("#User-apellido2").val(n.apellido2);
-                        $("#User-pass1").val(n.password);
-                        $("#User-pass2").val(n.password);
+
                         $("#User-puesto").empty();
                         $("#User-puesto").append(n.tipo_usuario);
                         $("#User-welcome").empty();
@@ -42,8 +41,7 @@
             var pass1 = $("#User-pass1").val();
             var pass2 = $("#User-pass2").val();
             var dni = $("#User-DNI").val();
-            usuario = {"id_usuario": id, "dni": dni, "nombre": nombre, "apellido1": apellido1,
-                "apellido2": apellido2, "nick": nick, "password": pass1, "email": email};
+
             checkMail = {"email": email, "id_usuario": id};
             checkDNI = {"dni": dni, "id_usuario": id};
             validarPass = true;
@@ -109,7 +107,11 @@
                     clearInterval(waitForIt);
                 }
             }
-            $("#user-update").on("click", function () {
+           $("#user-update").on("click", function () {
+                ////////////////INSERT CON PASS ////////////
+                if( $("#User-pass1").val()!==""){
+                usuario = {"id_usuario": id, "dni": dni, "nombre": nombre, "apellido1": apellido1,
+                    "apellido2": apellido2, "nick": nick, "password": pass1, "email": email};
                 $.ajax({
                     url: 'http://localhost/gospo/vendor/GospoAPI/usuario',
                     dataType: 'json',
@@ -117,8 +119,26 @@
                     data: JSON.stringify(usuario),
                     success: function (user) {
                         carga();
+                        $("#User-pass1").val("");
+                        $("#User-pass2").val("");
                     }
                 });
+            }else{
+                ////////////////INSERT SIN PASS //////////////
+                 usuarioNP = {"id_usuario": id, "dni": dni, "nombre": nombre, "apellido1": apellido1,
+                    "apellido2": apellido2, "nick": nick, "email": email};
+                $.ajax({
+                    url: 'http://localhost/gospo/vendor/GospoAPI/usuarioNoPass',
+                    dataType: 'json',
+                    type: 'PUT',
+                    data: JSON.stringify(usuarioNP),
+                    success: function (user) {
+                        carga();
+                  
+                    }
+                });
+            }
+            //////// CANCELAR MODIFICACIÓN /////////
             });
             $("#Cancel-user-update").on("click", function () {
                 carga();
