@@ -15,7 +15,7 @@ $(document).ready(function () {
 
         var jcarro = localStorage.getItem("carro");
         var carro = JSON.parse(jcarro);
-        if ((carro === null) || (carro.length <1)){
+        if ((carro === null) || (carro.length < 1)) {
             $("#carrito__contenido").html("");
             var carroEmpty = "<h5>No tienes ningún articulo en el carro</h5>";
             $("#carrito__contenido").append(carroEmpty);
@@ -25,7 +25,9 @@ $(document).ready(function () {
             carro.forEach(n => {
 
                 var url = "";
-                if (document.referrer === "http://172.16.205.8/gospo/index.html") {
+                if ((document.referrer === "http://172.16.205.8/gospo/index.html") || (document.referrer === "172.16.205.8/gospo/index.html") ||
+                        (document.referrer === "http://localhost/gospo/index.html")) {
+
                     url = n.imagen;
                 } else {
                     url = n.imagen.substring(3);
@@ -83,7 +85,7 @@ $(document).ready(function () {
                         items.splice(i, 1);
                     }
                 }
-                if (items.length<1){
+                if (items.length < 1) {
                     $(".carrito__footer--precio-total").html("");
                     $("#Modal__carrito").modal("hide");
                 }
@@ -96,7 +98,7 @@ $(document).ready(function () {
                 }, 300);
                 precioTotal();
                 articulos();
-                
+
             });
             $("#boton__vaciar").on("click", function () {
                 $("#carrito__contenido").html("");
@@ -108,16 +110,35 @@ $(document).ready(function () {
 
             });
             $("#boton__reservar").on("click", function () {
-                $("#Comprar-Reservas").modal("show");
-
+               // var url = "";
+               // url = "../model/login_registro/php/checksession.php"; 
+                
+               // var text = 'enviado';
+               // $.ajax({
+                    
+                 //   url: url,
+                   // type: 'post',
+                   // dataType: 'json',
+                   // data: {secure: text} ,
+                  //  success: function(sesion){
+                    //    console.log(sesion);
+                      //  if(sesion.establecida === 'true'){
+                            $("#Comprar-Reservas").modal("show");  //codigo original
+                      //  }else{
+                      //      alert("Para realizar reservas es necesario iniciar sesión de usuario LOG IN");
+                      //  }
+                  //  }
+                    
+              //  });
+                
 
             });
         });
     });
     $(".boton--pagar-reservar").on("click", function () {
-        
-        
-        
+
+
+
         var envio = localStorage.getItem("carro");
 
 
@@ -136,7 +157,7 @@ $(document).ready(function () {
                 $(".nav-item__carro__contador").text("");
                 $('.datepicker').val("");
                 $('.timepicker').val("");
-                
+
 
             }
 

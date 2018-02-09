@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 5, 2018, 12:39:05 PM
+    Author     : Pyrena
+*/
+/*============COLORS=============*/
+/*============SIZES=============*/
+#form-sign-up label.error,
+#form-sign-in label.error {
+  margin-top: 30px;
+  color: darkred;
+  font-size: 12px; }
+
+#form-sign-up label.valid,
+#form-sign-in label.valid {
+  margin-top: 30px;
+  color: blueviolet;
+  font-size: 12px; }

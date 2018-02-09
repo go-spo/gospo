@@ -15,7 +15,7 @@ $(document).ready(function () {
 
             console.log("Latitud: " + pos.lat + "Longitud: " + pos.lng);
             $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + pos.lat + "," + pos.lng + "&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY", function (data) {
-                console.log(data.results);
+                
                 lastPos = data.results[0].address_components.length - 1;
                 //provincia = data.results[0].address_components[3].long_name;
                 //console.log(provincia);
