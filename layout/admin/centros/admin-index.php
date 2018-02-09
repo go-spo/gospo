@@ -30,7 +30,7 @@ if (isset($_SESSION['id_user_pag_principal'])) {
             <div class="wrapper">
                 <div class="sidebar" data-color="blue" data-image="../../../resources/img/girl-warmup.JPG">
                     <div class="logo">
-                        <a href="#" class="simple-text">
+                        <a href="../../../index.html" class="simple-text" target="_blank">
                             <img src="../../../resources/img/logo-3.PNG" alt=""/>
                         </a>
                     </div>
@@ -90,7 +90,7 @@ if (isset($_SESSION['id_user_pag_principal'])) {
                             <div class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="#" id="SignOut" class="dropdown-toggle" data-toggle="dropdown">
+                                        <a href="#" onclick='window.location = "../../../model/admin/sign-out/sign-out.php"' onclick='window.location = "../../../model/admin/sign-out/sign-out.php"'  class="dropdown-toggle" data-toggle="dropdown">
                                             <i class="material-icons">forward</i>
                                             <p class="hidden-lg hidden-md">Sing Out</p>
                                         </a>
@@ -252,7 +252,9 @@ if (isset($_SESSION['id_user_pag_principal'])) {
         <script src="../../../vendor/admin-page/js/material-dashboard.js" type="text/javascript"></script>
         <!-- Dashboard data -->
         <script src="../../../model/admin/dashboard/dashboard.js" type="text/javascript"></script>
-        <?php include '../../../model/admin/dashboard/user-welcome.php'; ?>
+        <?php
+        include '../../../model/admin/dashboard/user-welcome.php';
+        ?>
     </html>
 
     <?php
