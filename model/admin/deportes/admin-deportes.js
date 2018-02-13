@@ -191,7 +191,7 @@ $(document).ready(function () {
                 '                           </div>  ' +
                 '                       </div>      ' +
                 '     ' +
-                '                       <button type="submit" class="btn btn-default pull-right" style="background-color: #7e57c2" data-toggle="modal" data-target="#updateConfirm">Insertar</button>  ' +
+                '                       <button  type="submit" class="btn btn-default pull-right" style="background-color: #7e57c2" data-toggle="modal" data-target="#updateConfirm">Modificar</button>  ' +
                 '                  </div>  ');
 
 
@@ -201,7 +201,52 @@ $(document).ready(function () {
 
         $("#deportes-update-form").find(".label-floating").removeClass("is-empty");
 
+        $("#center-update").click(function () {
+            nombre = $("input[name='nombre-update-deporte']").val();
+            descripcion = $("input[name='descripcion-update-deporte']").val();
+            img = $("input[name='file_input_text_div']").val();
 
+            deporteInsert = {
+                nombre: nombre,
+                descripcion: descripcion,
+                imagen: img
+            };
+
+            deporteInsert = JSON.stringify(deporteInsert);
+
+
+            $.ajax({
+                url: '../../../vendor/GospoAPI/deportes',
+                type: 'POST',
+                dataType: 'json',
+                data: deporteInsert,
+                success: function (insertResult) {
+                    //subir imagen
+                    var file_data = $("input[name='file_input_img_div']").prop('files')[0];
+                    var form_data = new FormData();
+                    form_data.append('file', file_data);
+
+                    $.ajax({
+                        url: '../../../model/admin/deportes/img-update-deporte.php', // point to server-side PHP script 
+                        dataType: 'text', // what to expect back from the PHP script, if anything
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                        type: 'post',
+                        success: function (php_script_response) {
+                            window.location.href = './admin-deportes.php';
+                        },
+                        error: function (error) {
+                            alert(error.responseText);
+                        }
+                    });
+
+                }, error: function (error) {
+                    alert(error.responseText);
+                }
+            });
+        });
     });
 
 }

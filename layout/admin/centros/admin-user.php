@@ -35,7 +35,7 @@ if (isset($_SESSION['id_user_pag_principal'])) {
                 Tip 2: you can also add an image using data-image tag
                     -->
                     <div class="logo">
-                       <a href="../../../index.html" class="simple-text" target="_blank">
+                        <a href="../../../index.html" class="simple-text" target="_blank">
                             <img src="../../../resources/img/logo-3.PNG" alt=""/>
                         </a>
                     </div>
@@ -181,13 +181,14 @@ if (isset($_SESSION['id_user_pag_principal'])) {
                                 <div class="col-md-4">
                                     <div class="card card-profile">
                                         <div class="card-avatar">
-                                            <a href="#pablo">
-                                                <img class="img" src="https://ih0.redbubble.net/image.483633982.6622/flat,1000x1000,075,f.u4.jpg" />
+                                            <a href="#">
+                                                <img id="imagen-usuario" class="img" src="https://ih0.redbubble.net/image.483633982.6622/flat,1000x1000,075,f.u4.jpg" />
                                             </a>
                                         </div>
                                         <div class="content">
                                             <h6 class="category text-gray" id="User-puesto"></h6>
-                                            <a href="#pablo" class="btn btn-primary btn-round" style="background-color: #009688">Cambiar foto</a>
+                                            <input type="file" id="selectedFile" style="display: none;" />
+                                            <a href="#" class="btn btn-primary btn-round" style="background-color: #009688" onclick="document.getElementById('selectedFile').click()">Cambiar foto</a>
                                         </div>
                                     </div>
                                 </div>
@@ -210,8 +211,7 @@ if (isset($_SESSION['id_user_pag_principal'])) {
     <!-- Material Dashboard javascript methods -->
     <script src="../../../vendor/admin-page/js/material-dashboard.js" type="text/javascript"></script>
     <!--Custom-->
-    <?php
-    include '../../../model/admin/users/users.php';?>
+    <?php include '../../../model/admin/users/users.php'; ?>
 
     </html>
 

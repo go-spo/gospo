@@ -9,12 +9,12 @@
     background-position: 0% 50%; } }
 
 .modal-header {
-  color: white;
-  background: linear-gradient(to right, #4dcef2, #e54b4b);
+  background: linear-gradient(-45deg, #e54b4b, #e54b4b, #23A6D5, #23D5AB);
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
   padding-top: 18px !important;
-  padding-bottom: 18px !important; }
+  padding-bottom: 18px !important;
+  color: white; }
 
 .modal-content {
   border-radius: 5px 5px 0px 0px !important; }

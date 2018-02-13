@@ -135,7 +135,7 @@ class GospoAPI {
             $this->response(422, "error", "Nothing to add. Check json");
         } else if (isset($obj->nombre)) {
             $deporte = new GospoDB();
-            $deporte->insertDeporte($obj->nombre, $obj->descripcion, $obj->tags, $obj->icono_full, $obj->icono_empty, $obj->imagen, $obj->color);
+            $deporte->insertDeporte($obj->nombre, $obj->descripcion, null, null,null, $obj->imagen, null);
             $this->response(200, "success", "new Sport added");
         } else {
             $this->response(422, "error", "The property is not defined");
@@ -150,7 +150,7 @@ class GospoAPI {
             $this->response(422, "error", "Nothing to add. Check json");
         } else if (isset($obj->id_deporte)) {
             $db = new GospoDB();
-            $db->updateDeporte($obj->id_deporte, $obj->descripcion, $obj->tags, $obj->icono_full, $obj->icono_empty, $obj->imagen, $obj->color);
+            $db->updateDeporte($obj->id_deporte, $obj->descripcion, null,null, null, $obj->imagen, null);
             $this->response(200, "success", "Deporte updated");
         } else {
             $this->response(422, "error", "The property is not defined");
@@ -234,7 +234,36 @@ class GospoAPI {
             $this->response(422, "error", "Nothing to add. Check json");
         } else if (isset($obj->id_usuario)) {
             $usuario = new GospoDB();
-            $usuario->updateUsuario($obj->id_usuario, $obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $obj->password, $obj->email);
+            $pass = password_hash($obj->password, PASSWORD_DEFAULT);
+            $usuario->updateUsuario($obj->id_usuario, $obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $pass, $obj->email);
+            $this->response(200, "success", "Usuario updated");
+        } else {
+            $this->response(422, "error", "The property is not defined");
+        }
+    }
+
+    function updateUsuarioNoPass() {
+        $obj = json_decode(file_get_contents('php://input'));
+        $objArr = (array) $obj;
+        if (empty($objArr)) {
+            $this->response(422, "error", "Nothing to add. Check json");
+        } else if (isset($obj->id_usuario)) {
+            $usuario = new GospoDB();
+            $usuario->updateUsuarioNopass($obj->id_usuario, $obj->dni, $obj->nombre, $obj->apellido1, $obj->apellido2, $obj->nick, $obj->email);
+            $this->response(200, "success", "Usuario updated");
+        } else {
+            $this->response(422, "error", "The property is not defined");
+        }
+    }
+
+    function updateUsuarioFoto() {
+        $obj = json_decode(file_get_contents('php://input'));
+        $objArr = (array) $obj;
+        if (empty($objArr)) {
+            $this->response(422, "error", "Nothing to add. Check json");
+        } else if (isset($obj->id_usuario)) {
+            $usuario = new GospoDB();
+            $usuario->updateUsuarioFoto($obj->id_usuario, $obj->foto);
             $this->response(200, "success", "Usuario updated");
         } else {
             $this->response(422, "error", "The property is not defined");
@@ -330,11 +359,11 @@ class GospoAPI {
         } else if (isset($obj->dni)) {
             $db = new GospoDB();
             if ($db->checkDNIupd($obj->dni, $obj->id_usuario)) {
-               // $this->response(1061, "error", "DNI no valido");
-                 $response = array("status" => "error", "message" => "DNI no valido");
+                // $this->response(1061, "error", "DNI no valido");
+                $response = array("status" => "error", "message" => "DNI no valido");
                 echo json_encode($response, JSON_PRETTY_PRINT);
             } else {
-               // $this->response(200, "success", "DNI libre");
+                // $this->response(200, "success", "DNI libre");
                 $response = array("status" => "success", "message" => "DNI valido");
                 echo json_encode($response, JSON_PRETTY_PRINT);
             }
@@ -400,6 +429,10 @@ class GospoAPI {
                     $this->updateDeporte();
                 } else if ($_GET['action'] == 'usuario') {
                     $this->updateUsuario();
+                } else if ($_GET['action'] == 'usuarioNoPass') {
+                    $this->updateUsuarioNoPass();
+                } else if ($_GET['action'] == 'usuarioFoto') {
+                    $this->updateUsuarioFoto();
                 } else if ($_GET['action'] == 'ultimaVisita') {
                     $this->setUltimaVisita();
                 } else if ($_GET['action'] == 'updateEmail') {
