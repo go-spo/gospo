@@ -20,3 +20,6 @@ and open the template in the editor.
   margin-top: 30px;
   color: blueviolet;
   font-size: 12px; }
+
+#tablogin, #tabregistro {
+  color: black !important; }

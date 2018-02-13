@@ -37,7 +37,7 @@ if (isset($_GET["deporte"])) {
         <link href="../vendor/pickadate/themes/default.date.css" rel="stylesheet" type="text/css"/>
         <link href="../vendor/pickadate/themes/default.time.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
-        <link href="../styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
+        <link href="../styles/css/index.css" rel="stylesheet" type="text/css"/> 
         <!-- Carro compra-->
         <link href="../styles/css/carro.css" rel="stylesheet" type="text/css"/>
         <!-- Your custom styles login --> 
@@ -60,7 +60,7 @@ if (isset($_GET["deporte"])) {
         <!-- Data picker -->
         <script src="../vendor/jquery/components/data_picker/data_picker.js" type="text/javascript"></script>
         <!-- Font Awesome -->
-        <script src="../vendor/fontawesome-all.js" type="text/javascript"></script>
+        <script src="../vendor/fontawesome/fontawesome-all.js" type="text/javascript"></script>
         <!-- Drag and drop -->
         <script src="../model/drag-drop/drag-drop.js" type="text/javascript"></script>
         <!-- Google Maps -->

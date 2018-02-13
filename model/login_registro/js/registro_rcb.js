@@ -235,7 +235,7 @@ $(document).ready(function () {
                 console.log(sesion);
                 if (sesion.establecida === 'true') {
                     var valorusuario = sesion.usuario;
-                //    $('#label-user').text(" " + valorusuario);   DESCOMENTAR PARA USUARIOS DEPORTISTAS
+                    //    $('#label-user').text(" " + valorusuario);   DESCOMENTAR PARA USUARIOS DEPORTISTAS
                     //return true;
                 } else {
 
@@ -268,9 +268,9 @@ $(document).ready(function () {
                     window.location = "admin/centros/admin-index.php";
                 } else if (data.status === 'successuser') {
                     //alert(data.message);
-                  //  var usuario = data.usuario;
+                    //  var usuario = data.usuario;
                     //rellenar div con nombre e icono
-                  //  $('#label-user').text(" " + usuario);  DESCOMENTAR PARA LOGIN USUARIOS DEPORTISTA
+                    //  $('#label-user').text(" " + usuario);  DESCOMENTAR PARA LOGIN USUARIOS DEPORTISTA
                     limpiarDatosForms();
                     desvincularEventos_();
                     $('#modalLRForm').modal('hide');
@@ -282,21 +282,21 @@ $(document).ready(function () {
                     limpiarDatosForms();
                     //$("#info-email").hide();
                     //$("#info-pwd").hide();
-                   // desvincularEventos_();
-                   // $('#modalLRForm').modal('hide');
-                   // window.location = window.location.href;
-                   // location.reload(true);
+                    // desvincularEventos_();
+                    // $('#modalLRForm').modal('hide');
+                    // window.location = window.location.href;
+                    // location.reload(true);
 
                 } else if (data.status === 'errornoregistrado') {
                     alert(data.message);
                     limpiarDatosForms();
                     //$("#info-email").hide();
                     //$("#info-pwd").hide();
-                   // desvincularEventos_();
-                   // $('#modalLRForm').modal('hide');
-                   // window.location = window.location.href;
-                   // location.reload(true);
-                   setTimeout(function () {
+                    // desvincularEventos_();
+                    // $('#modalLRForm').modal('hide');
+                    // window.location = window.location.href;
+                    // location.reload(true);
+                    setTimeout(function () {
                         $("#form-sign-in").trigger('reset');
                         $('#tabregistro').attr("class", "nav-link active");
                         $('#panel7').attr("class", "tab-pane fade");
@@ -420,7 +420,7 @@ $(document).ready(function () {
 
     $('#youremail').on('keypress focusout', function () {
         var texto = $('#youremail').val();
-       checkForm("#btn-login");
+        checkForm("#btn-login");
         if (texto === "") {
             $('#info-email').text('Campo requerido');
             $('#info-email').attr("class", "error");
@@ -432,7 +432,7 @@ $(document).ready(function () {
                 $('#info-email').attr("class", "error");
                 checkForm("#btn-login");
             } else {
-                
+
                 $('#info-email').text('ok');
                 $('#info-email').attr("class", "valid");
                 checkForm("#btn-login");
@@ -523,39 +523,39 @@ $(document).ready(function () {
 
     });
 
-   /*
-    $("#email").on('focusout', function () {  //TODO ELEGIR EVENTO
-        var datoEmail = $("#email").val();
-        comprobarEmailBD(datoEmail);    
-    });
-*/
+    /*
+     $("#email").on('focusout', function () {  //TODO ELEGIR EVENTO
+     var datoEmail = $("#email").val();
+     comprobarEmailBD(datoEmail);    
+     });
+     */
 
-function comprobarEmailBD(datoEmail){
-        
+    function comprobarEmailBD(datoEmail) {
+
         var emailG = emailchecker(datoEmail);
         var datosjson = {'email': datoEmail};
         var datos = JSON.stringify(datosjson);
         if (emailG) {
 
             $.ajax({
-                url: 'http://localhost/gospo/vendor/GospoAPI/checkEmail',  //ruta amigable API
+                url: 'http://localhost/gospo/vendor/GospoAPI/checkEmail', //ruta amigable API
                 //url: "model/login_registro/php/emailchecker.php",  
                 type: "POST",
                 data: datos,
                 success: function (resp) {
 
                     if (resp.status === "success") {
-                       return true;
+                        return true;
 
                     } else {
                         $('#iemail').text('Email ya registrado');
                         return false;
-                        
+
                     }
                 }
             });
         }
-}
+    }
 
     $('#password').on('keyup focusout focusin', function () {
         var texto1 = $('#password').val();
@@ -572,7 +572,7 @@ function comprobarEmailBD(datoEmail){
                 checkForm2("#btn-registro");
 
             } else {
-                
+
                 $('#ipassword').text('ok');
                 $('#ipassword').attr("class", "valid");
                 checkForm2("#btn-registro");
@@ -580,8 +580,26 @@ function comprobarEmailBD(datoEmail){
         }
 
     });
-    
-    
+
+    $('#password2').on('keyup focusout focusin', function () {
+        var texto1 = $('#password').val();
+        var texto2 = $('#password2').val();
+        checkForm2("#btn-registro");
+        if (texto1 === "") {
+            $('#ipassword2').text('Campo requerido');
+            $('#ipassword2').attr("class", "error");
+            checkForm2("#btn-registro");
+        } else if (texto1 !== texto2) {
+            $('#ipassword2').text('Las contraseñas no coinciden');
+            $('#ipassword2').attr("class", "error");
+            checkForm2("#btn-registro");
+
+        } else {
+            $('#ipassword2').text('ok coinciden');
+            $('#ipassword2').attr("class", "valid");
+            checkForm2("#btn-registro");
+        }
+    });
 
     $('#dni').on('keyup focusout focusin', function () {
         var texto1 = $('#dni').val();
@@ -631,7 +649,7 @@ function comprobarEmailBD(datoEmail){
 
     });
 
- $('#apellido1').on('keyup focusout focusin', function () {
+    $('#apellido1').on('keyup focusout focusin', function () {
         var texto1 = $('#apellido1').val();
         checkForm2("#btn-registro");
         if (texto1 === "") {
@@ -696,26 +714,26 @@ function comprobarEmailBD(datoEmail){
         var email = $('#email').val();
         var password = $('#password').val();
         var password2 = $('#password2').val();
-       // var control = comprobarEmailBD(email);   // control &&
-        
-        if (password === password2){
+        // var control = comprobarEmailBD(email);   // control &&
+
+        if (password === password2) {
             coinciden = true;
-        }else{
+        } else {
             coinciden = false;
         }
-        
-        if( $('#iemail').text() === 'Nuevo usuario' ){
-             control = true;
-        }else{
+
+        if ($('#iemail').text() === 'Nuevo usuario') {
+            control = true;
+        } else {
             control = false;
         }
-            
-        if ( dnichecker(dni) &&
-            emailchecker(email) && 
-            passwordchecker(password) && coinciden &&
-            namechecker(apellido1) &&
-            namechecker(apellido2) &&
-            namechecker(nombre))
+
+        if (dnichecker(dni) &&
+                emailchecker(email) &&
+                passwordchecker(password) && coinciden &&
+                namechecker(apellido1) &&
+                namechecker(apellido2) &&
+                namechecker(nombre))
         {
             enableSubmit(idBoton);
 
@@ -739,7 +757,7 @@ function comprobarEmailBD(datoEmail){
 
     function submitForm() {
 
-       var dnienviar = $('#dni').val();
+        var dnienviar = $('#dni').val();
         var nombreenviar = $('#nombre').val();
         var apellido1enviar = $('#apellido1').val();
         var apellido2enviar = $('#apellido2').val();
@@ -747,23 +765,23 @@ function comprobarEmailBD(datoEmail){
         var emailenviar = $('#email').val();
         var passwordenviar = $('#password').val();
 
-        var datosEnviar = {'dni': dnienviar, 'nombre': nombreenviar, 'apellido1': apellido1enviar, 
+        var datosEnviar = {'dni': dnienviar, 'nombre': nombreenviar, 'apellido1': apellido1enviar,
             'apellido2': apellido2enviar, 'nick': nickenviar, 'email': emailenviar, 'password': passwordenviar};
         //datos = JSON.stringify(datosEnviar);
         $.ajax({
-            url: 'model/login_registro/php/registro.php',
+            url: '../model/login_registro/php/registro.php',
             type: 'POST',
             dataType: 'json',
             data: datosEnviar,
             success: function (datos) {
                 //alert(datos);
-                    limpiarDatosForms();
-                    desvincularEventos();
-                    $('#modalLRForm').modal('hide');
-                    location.reload(true);
+                limpiarDatosForms();
+                desvincularEventos();
+                $('#modalLRForm').modal('hide');
+                location.reload(true);
             },
             error: function (datos) {
-               // alert(datos);
+                // alert(datos);
                 alert("Se ha producido un error inesperado, inténtelo de nuevo más tarde");
 
             }

@@ -21,7 +21,7 @@ if (isset($_SESSION['id_user_pag_principal'])) {
             <!--     Fonts and icons     -->
             <link href="../../../vendor/fontawesome/fontawesome-admin.css" rel="stylesheet" type="text/css"/>
             <link href="../../../vendor/fontawesome/materialIcon.css" rel="stylesheet" type="text/css"/>
-            <script src="../../../vendor/fontawesome-all.js" type="text/javascript"></script>
+            <script src="../../../vendor/fontawesome/fontawesome-all.js" type="text/javascript"></script>
             <!--  Custom styles  -->
             <link href="../../../styles/css/admin-index.css" rel="stylesheet" type="text/css"/>    
         </head>
