@@ -1,8 +1,24 @@
 @import "_variables.scss";
 
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
 .modal-header{
-    background: linear-gradient(to right,#e54b4b, #4dcef2);
-    color:white;
+    color: white;
+    background: linear-gradient(to right,#4dcef2, #e54b4b);
+    background-size: 400% 400%;
+    animation: Gradient 15s ease infinite;
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
 }
 
 .modal-content{
@@ -53,7 +69,7 @@ hr{
         max-width: 90vw;
         margin-bottom: 15px;
     }
-    
+
     .card-title{
         font-size: 3vw !important;
     }
